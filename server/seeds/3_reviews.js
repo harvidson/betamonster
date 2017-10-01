@@ -6,21 +6,21 @@ const reviewList = [
     project_id: 1,
     created_at: new Date('2017-09-03 14:26:16 UTC'),
     updated_at: new Date('2017-09-03 14:26:16 UTC'),
-    deactivated_at: null;
+    deactivated_at: null
   },
   {
     id: 2,
     project_id: 2,
     created_at: new Date('2017-09-13 14:26:16 UTC'),
     updated_at: new Date('2017-09-13 14:26:16 UTC'),
-    deactivated_at: null;
+    deactivated_at: null
   },
   {
     id: 3,
     project_id: 3,
     created_at: new Date('2017-09-23 14:26:16 UTC'),
     updated_at: new Date('2017-09-23 14:26:16 UTC'),
-    deactivated_at: null;
+    deactivated_at: null
   }
 ]
 

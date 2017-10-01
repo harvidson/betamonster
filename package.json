@@ -8,7 +8,8 @@
     "start": "nodemon ./server/bin/www",
     "knex": "knex",
     "latest": "knex --knexfile ./server/knexfile.js migrate:latest",
-    "rollback": "knex --knexfile ./server/knexfile.js migrate:rollback"
+    "rollback": "knex --knexfile ./server/knexfile.js migrate:rollback",
+    "seed": "knex --knexfile ./server/knexfile.js seed:run"
   },
   "repository": {
     "type": "git",
