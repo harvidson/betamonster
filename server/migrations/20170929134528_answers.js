@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
       .inTable('users')
       .onDelete('CASCADE')
       .index();
-    table.text('answers').notNullable();
+    table.text('answer').notNullable();
     table.timestamps(true, true);
     table.timestamp('deleted_at').defaultTo(null);
     table.text('watson_analysis');

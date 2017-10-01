@@ -32,7 +32,8 @@
     "knex": "^0.13.0",
     "moment": "^2.18.1",
     "path": "^0.12.7",
-    "pg": "^7.3.0"
+    "pg": "^7.3.0",
+    "phantomjs": "^2.1.7"
   },
   "devDependencies": {
     "body-parser": "^1.18.2",

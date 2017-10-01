@@ -7,8 +7,9 @@ exports.up = function(knex, Promise) {
     table.string('last_name').notNullable().defaultTo('');
     table.string('email').notNullable().unique();
     table.specificType('hashed_password', 'char(60)').notNullable();
-    table.timestamps(true, true)
+    table.timestamps(true, true);
     table.string('avatar').notNullable();
+    table.boolean('isDeveloper').notNullable();
   })
 };
 

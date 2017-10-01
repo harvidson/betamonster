@@ -1,7 +1,7 @@
 'use strict';
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('reviews_questions' (table) => {
+  return knex.schema.createTable('reviews_questions', (table) => {
     table.increments();
     table.integer('review_id')
       .notNullable()
