@@ -31,48 +31,63 @@
         <div class="fl w-100 w-third-ns pa2 cf">
           <div class="pv4">
             <!-- active color is currently hard coded; will need to be dynamic for both buttons-->
-            <button class="bw0 br3 bg-mid-gray pa2 near-white fw1 tc fr bg-animate hover-bg-mid-gray bg-navbar-active">log in</button>
-            <button class="bw0 br3 bg-light-silver pa2 near-white fw1 tc bg-animate hover-bg-mid-gray fr mr2">sign up</button>
+            <button class="bw0 br3 bg-mid-gray pa2 near-white fw1 tc fr bg-animate hover-bg-mid-gray bg-navbar-active">developer</button>
+            <button class="bw0 br3 bg-light-silver pa2 near-white fw1 tc bg-animate hover-bg-mid-gray fr mr2">tester</button>
           </div>
         </div>
       </div>
     </div>
 
+    <nav class="mw9 ph3-ns ">
+      <div class="fl cf w-100 pa2">
 
+        <a class="link mid-gray sans-serif f4 fw3 dib pa3 underline-hover accent" href="/">my projects</a>
+        <a class="link mid-gray sans-serif f4 fw2 underline-hover" href="/">new project</a>
+      </div>
+    </nav>
 
   </header>
 
   <main>
-
     <div class="mw9 ph3-ns cf">
 
-      <!-- template for project-listing component -->
-        <div class="fl w-100 pa2">
+      <!-- template for profile component -->
+      <div class="cf ph2-ns">
+        <div class="fl w-100 w-third-ns pa2">
+          <div class="bg-white pv4 br4">
+            <img class="db center br-100" src="https://api.adorable.io/avatars/150/sampleuser.png" alt="user avatar" />
+            <div class="ma10 tc pt2">
+              username
+              <br /> profile
+              <br />
+              <button class="center bw0 br3 bg-mid-gray dim mt2 near-white fw1 tc pa1 mr2">edit profile</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="fl w-100 w-two-thirds-ns pa2">
           <div class="bg-white pa4 br4">
             <div>
-              <h2 class="mid-gray sans-serif f3 fw4">Projects</h2>
+              <h2 class="mid-gray sans-serif f3 fw4">My Projects</h2>
+
               <div >
                 <div class="overflow-auto">
                   <table class="f6 w-100 mw8 center" cellspacing="0">
-
-                    <tbody class="lh-copy">
-                      <tr class="">
-                        <td class="pa3 v-top bb b--black-20"><a href="/" class="link mid-gray underline-hover ">Seattle Stuffcycle</a></td>
-                        <td class="pa3 tr bb b--black-20">
-                          <a href="/" class="link mid-gray underline-hover ">
-                            <img src="https://api.adorable.io/avatars/100/sampleuser.png" alt="project landing page" />
-                          </a>
-                        </td>
+                    <thead class="lh-copy">
+                      <tr class="stripe-dark">
+                        <th class="tl bg-white mid-gray sans-serif f5 fw3">published</th>
+                        <th class="tl bg-white mid-gray sans-serif f5 fw3 tr">surveys in</th>
                       </tr>
-
-                      <tr class="">
-                        <td class="pa3 v-top bb b--black-20"><a href="/" class="link mid-gray underline-hover">Favor Bank</a></td>
-                        <td class="pa3 tr bb b--black-20">
-                          <a href="/" class="link mid-gray underline-hover ">
-                            <img src="https://api.adorable.io/avatars/100/sampleuser.png" alt="project landing page" />
-                          </a>
-                        </td>
-                     </tr>
+                    </thead>
+                    <tbody class="lh-copy">
+                      <tr class="stripe-dark">
+                        <td class="pa3"><a href="/" class="link mid-gray underline-hover">Seattle Stuffcycle</a></td>
+                        <td class="pa3 tr"><span class="br-100 bg-mid-gray tr white ph1">2</span></td>
+                      </tr>
+                      <tr class="stripe-dark">
+                        <td class="pa3"><a href="/" class="link mid-gray underline-hover">Favor Bank</a></td>
+                        <td class="pa3 tr"><span class="br-100 bg-mid-gray tr white ph1">3</span></td>
+                      </tr>
 
                     </tbody>
                   </table>
@@ -85,7 +100,9 @@
 
 
 
-
+              <hr />
+              <h3 class="mid-gray sans-serif f5 fw3">unpublished</h3>
+              <hr />
             </div>
           </div>
         </div>
