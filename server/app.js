@@ -21,9 +21,14 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '/../client')))
+app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
 
 
 //add things like app.use('/api/v1', index ==> for all the routes)
+app.use('api/tester', require('./routes/tester'))
+app.use('api/developer', require('./routes/developer'))
+
+
 app.use('*', function(req, res) {
   res.sendFile('index.html', {
     root: path.join(__dirname, '/../client')

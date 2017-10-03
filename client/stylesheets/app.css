@@ -7,3 +7,15 @@
 .accent {
   color: #82BD38
 }
+
+.nav-buttons {
+  /*white-space: nowrap;
+  overflow: auto;*/
+
+  /*display:flex;
+  overflow-x:auto;
+  overflow-y:hidden;*/
+
+  overflow-x: scroll;
+  white-space: nowrap
+}
