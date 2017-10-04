@@ -16,9 +16,9 @@
         component: 'home',
       })
       .state({
-        name: 'projects',
+        name: 'project',
         url: '/projects',
-        component: 'projects',
+        component: 'project',
       })
   }
 

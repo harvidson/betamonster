@@ -2,9 +2,9 @@
 'use strict';
 
 angular.module('app')
-.component('projects', {
+.component('project', {
   controller,
-  templateUrl: '/projects/projects.template.html'
+  templateUrl: '/projects/project.template.html'
 })
 
 controller.$inject = ['$state', '$stateParams', '$http'];
