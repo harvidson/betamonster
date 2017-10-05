@@ -31,12 +31,13 @@ router.post('/users', (req, res, next) => {
           first_name: req.body.firstName,
           last_name: req.body.lastName,
           email: req.body.email,
-          // avatar:
+          avatar: `https://api.adorable.io/avatars/150/${req.body.email}`
           // hashed_password: result
         }, '*')
     })
     .then((newUser) => {
       let user = camelizeKeys(newUser[0]);
+      console.log(user);
       delete user.hashedPassword;
       res.send(user);
     })

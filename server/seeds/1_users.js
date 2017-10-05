@@ -7,7 +7,7 @@ const usersList = [
     email: 'snoots@behavior.com',
     hashed_password: '$2a$12$oEnJjrb2XsPOTGhrn0o21.Ck5qiOXF4OIXes1rjCrbQJlRlSwoTVW', //failbetter
     avatar: 'https://api.adorable.io/avatars/200/snoots@behavior.com.png',
-    isDeveloper: false
+    is_developer: false
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const usersList = [
     email: 'flapper@hispanosuiza.com',
     hashed_password: '$2a$12$oEnJjrb2XsPOTGhrn0o21.Ck5qiOXF4OIXes1rjCrbQJlRlSwoTVW', //failbetter
     avatar: 'https://api.adorable.io/avatars/200/flapper@hispanosuiza.com.png',
-    isDeveloper: true
+    is_developer: true
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const usersList = [
     email: 'dorothy@freshhell.com',
     hashed_password: '$2a$12$oEnJjrb2XsPOTGhrn0o21.Ck5qiOXF4OIXes1rjCrbQJlRlSwoTVW', //failbetter,
     avatar: 'https://api.adorable.io/avatars/200/dorothy@freshhell.com.png',
-    isDeveloper: true
+    is_developer: true
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const usersList = [
     email: 'leadingback@splendor.com',
     hashed_password: '$2a$12$oEnJjrb2XsPOTGhrn0o21.Ck5qiOXF4OIXes1rjCrbQJlRlSwoTVW', //failbetter,
     avatar: 'https://api.adorable.io/avatars/200/leadingback@splendor.com.png',
-    isDeveloper: true
+    is_developer: true
   }
 
 ]
