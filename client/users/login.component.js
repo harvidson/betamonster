@@ -7,7 +7,9 @@ angular.module('app')
   templateUrl: '/users/login.template.html'
 })
 
-function controller() {
+controller.$inject = ['$state']
+
+function controller($state) {
   const vm = this;
 
 
