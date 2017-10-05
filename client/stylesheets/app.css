@@ -1,21 +1,32 @@
-/*accent color #82BD38*/
-
-.bg-navbar-active {
-  background-color: #82BD38;
-}
-
 .accent {
   color: #82BD38
 }
 
 .nav-buttons {
-  /*white-space: nowrap;
-  overflow: auto;*/
-
-  /*display:flex;
-  overflow-x:auto;
-  overflow-y:hidden;*/
-
   overflow-x: scroll;
   white-space: nowrap
+}
+
+.hover-bg-green:hover, .hover-bg-green:focus, .bg-navbar-active, .enabled:hover {
+  background-color: #82BD38;
+}
+
+input.ng-invalid.ng-dirty {
+  border-color: #B2482C;
+  border-width: 1px;
+  border-style: solid;
+}
+
+input.ng-valid.ng-dirty {
+  border-color: #82BD38;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.disabled {
+  background-color: #ccc;
+}
+
+.enabled {
+  cursor: pointer;
 }

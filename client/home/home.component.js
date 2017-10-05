@@ -7,9 +7,9 @@ angular.module('app')
   templateUrl: '/home/home.template.html'
 })
 
-controller.$inject = ['$state', '$stateParams', '$http'];
+// controller.$inject = ['$state', '$stateParams', '$http'];
 
-function controller($state, $stateParams, $http) {
+function controller() {
   const vm = this;
 
   vm.$onInit = function(){

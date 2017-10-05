@@ -16,9 +16,24 @@
         component: 'home',
       })
       .state({
-        name: 'project',
-        url: '/projects',
-        component: 'project',
+        name: 'login',
+        url: '/login',
+        component: 'login',
+      })
+      .state({
+        name: 'signup',
+        url: '/signup',
+        component: 'signup',
+      })
+      .state({
+        name: 'devDashboard',
+        url: '/developer',
+        component: 'developer',
+      })
+      .state({
+        name: 'testDashboard',
+        url: '/tester',
+        component: 'tester',
       })
   }
 

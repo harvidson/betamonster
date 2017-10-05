@@ -2,7 +2,6 @@
 
 const express = require('express')
 const knex = require('../knex')
-
 const bcrypt = require('bcrypt-as-promised');
 const boom = require('boom');
 const { camelizeKeys } = require('humps');
@@ -30,7 +29,7 @@ router.get('/token', (req, res, next) => {
 //on login, check email and password credentials
 router.post('/token', (req, res, next) => {
 
-  
+
 })
 
 
