@@ -4,7 +4,31 @@
 angular.module('app')
   .service('authService', service)
 
-  function service() {
+  service.$inject = ['$http']
+
+  function service($http) {
+
+    this.login = function(loginCred) {
+      return $http.post('/api/token', loginCred)
+      .then(function(response) {
+        console.log('response after api call', response);
+        return response
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
+    this.signup = function(signupData) {
+      return $http.post('/api/users', signupData)
+      .then(function(response) {
+        console.log('response after api call', response);
+        return response;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
 
   }
 

@@ -7,9 +7,9 @@ angular.module('app')
   templateUrl: '/users/signup.template.html'
 })
 
-controller.$inject = ['$state']
+controller.$inject = ['$state', 'authService']
 
-function controller($state) {
+function controller($state, authService) {
   const vm = this;
 
 
@@ -21,6 +21,8 @@ function controller($state) {
   vm.submitSignup = function(e) {
     e.preventDefault()
     console.log(vm.data);
+
+    authService.signup(vm.data);
 
     vm.navigateToPage('login')
 

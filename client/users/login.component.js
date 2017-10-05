@@ -7,9 +7,9 @@ angular.module('app')
   templateUrl: '/users/login.template.html'
 })
 
-controller.$inject = ['$state']
+controller.$inject = ['$state', 'authService']
 
-function controller($state) {
+function controller($state, authService) {
   const vm = this;
 
 
@@ -21,8 +21,10 @@ function controller($state) {
     e.preventDefault()
     console.log(vm.data);
 
+    authService.login(vm.data)
 
         //if someone has sent you a link, it would be nice if, after login, you get to go to that link
+        //to make the below work, would have to do a get from the db to get 'isDeveloper'
     if (vm.data.isDeveloper === "true") {
       console.log('developer');
     } else {
