@@ -24,15 +24,16 @@
       <div class="cf ph2-ns">
         <div class="fl w-100 w-two-thirds pa2">
           <div class="">
-            <h1 class="mid-gray f2-ns f3 fw3">betam<img src="images/monster.png" class="mw2" alt="betamonster logo"/>nster</h1>
+            <a ui-sref="home" class="link"><h1 class="mid-gray f2-ns f3 fw3">betam<img src="images/monster.png" class="mw2" alt="betamonster logo"/>nster</h1></a>
           </div>
         </div>
 
         <div class="fl w-100 w-third pa2 cf">
           <div class="pv4 nav-buttons">
             <!-- active color is currently hard coded; will need to be dynamic for both buttons-->
-            <button class="bw0 br3 bg-mid-gray pa2-l pa1 near-white f6 fw1 tc fr bg-animate hover-bg-mid-gray bg-navbar-active">developer</button>
-            <button class="bw0 br3 bg-light-silver pa2-l pa1 near-white f6 fw1 tc bg-animate hover-bg-mid-gray fr mr2">tester</button>
+            <a ui-sref="login" class="link"><button class="bw0 br3 bg-mid-gray pa2-l pa1 near-white f6 fw1 tc bg-animate hover-bg-green fr mr2 pointer link" ng-click="$ctrl.logout()">log out</button></a>
+            <a ui-sref="devDashboard" class="link"><button class="bw0 br3 bg-mid-gray pa2-l pa1 near-white f6 fw1 tc fr bg-animate hover-bg-mid-gray bg-navbar-active link mr2">developer</button></a>
+            <a ui-sref="testDashboard" class="link"><button class="bw0 br3 bg-mid-gray pa2-l pa1 near-white f6 fw1 tc bg-animate hover-bg-green fr mr2 pointer link">tester</button></a>
           </div>
         </div>
       </div>

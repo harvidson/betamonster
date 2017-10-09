@@ -7,13 +7,17 @@ angular.module('app')
     templateUrl: '/dashboards/developer.template.html'
   })
 
-  controller.$inject = ['$state', '$stateParams', '$http'];
+  controller.$inject = ['$state', '$stateParams', '$http', 'authService'];
 
-  function controller($state, $stateParams, $http) {
+  function controller($state, $stateParams, $http, authService) {
     const vm = this;
 
     vm.$onInit = function(){
 
+    }
+
+    vm.logout = function(){
+      authService.logout()
     }
   }
 
