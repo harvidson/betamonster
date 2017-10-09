@@ -25,7 +25,7 @@ function controller($state, authService) {
 
         //if someone has sent you a link, it would be nice if, after login, you get to go to that link
         //to make the below work, would have to do a get from the db to get 'isDeveloper'
-    if (vm.data.isDeveloper === "true") {
+    if (vm.data.isDeveloper === true) {
       console.log('developer');
     } else {
       vm.navigateToPage('tester')

@@ -9,7 +9,8 @@ angular.module('app')
   function service($http) {
 
     this.login = function(loginCred) {
-      return $http.post('/api/token', loginCred)
+      console.log('inside login');
+      return $http.post('/api/token/', loginCred)
       .then(function(response) {
         console.log('response after api call', response);
         return response
@@ -20,7 +21,7 @@ angular.module('app')
     }
 
     this.signup = function(signupData) {
-      return $http.post('/api/users', signupData)
+      return $http.post('/api/users/', signupData)
       .then(function(response) {
         console.log('response after api call', response);
         return response;

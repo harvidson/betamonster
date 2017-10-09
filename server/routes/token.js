@@ -11,7 +11,7 @@ const router = express.Router()
 
 //check that user has cookie: returns T or F
 
-router.get('/token', (req, res, next) => {
+router.get('/', (req, res, next) => {
   jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, payload) => {
     if (err) {
       return res.send({
@@ -26,7 +26,7 @@ router.get('/token', (req, res, next) => {
 });
 
 //on login, check email and password credentials
-router.post('/token', (req, res, next) => {
+router.post('/', (req, res, next) => {
   console.log('checking token');
   let user;
 

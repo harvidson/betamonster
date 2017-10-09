@@ -13,8 +13,7 @@ const {
 const router = express.Router()
 
 //register a new user
-router.post('/users', (req, res, next) => {
-  console.log('inside post to users');
+router.post('/', (req, res, next) => {
   //check to see whether user exists
   knex('users')
     .where('email', req.body.email)
@@ -28,12 +27,12 @@ router.post('/users', (req, res, next) => {
     })
     .then((result) => {
       const email = req.body.email;
-      console.log('hashed_password result: ', result);
       return knex('users')
         .insert({
           first_name: req.body.firstName,
           last_name: req.body.lastName,
           email: email,
+          is_developer: req.body.isDeveloper,
           avatar: `https://api.adorable.io/avatars/150/${email}`,
           hashed_password: result
         }, '*')
