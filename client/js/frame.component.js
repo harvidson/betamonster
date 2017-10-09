@@ -9,6 +9,12 @@ angular.module('app')
 
   function controller() {
     const vm = this;
+    vm.isTest = true;
+    vm.isDev = false;
+
+
+
+
     console.log('framing')
   }
 

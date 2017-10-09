@@ -25,14 +25,14 @@
         name: 'login',
         url: '/login',
         component: 'login',
-        parent: 'framing'
+        // parent: 'framing'
 
       })
       .state({
         name: 'signup',
         url: '/signup',
         component: 'signup',
-        // parent: 'framing'
+        parent: 'framing'
 
       })
       .state({
