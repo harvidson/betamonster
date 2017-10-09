@@ -55,6 +55,10 @@
                 'has-success': $ctrl.signupForm.password.$valid }">
               <label class="db fw4 lh-copy f6" for="password"></label>
               <input class="pa2 input-reset ba--mid-gray br2 form-control" type="password" name="password" id="password" placeholder="password" required ng-minlength=8 ng-model="$ctrl.data.password">
+              <small id="password-desc" class="f7 lh-copy black-60 db ma2">
+                Minimum 8 characters; one number, one uppercase
+                letter.
+              </small>
             </div>
 
             <div class="mt3">

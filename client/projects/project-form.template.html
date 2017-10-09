@@ -1,0 +1,68 @@
+<div class="ph3-ns mw8-ns center">
+  <div class="bg-white ph4 pb4 pt1 br4">
+    <h2 class="mid-gray sans-serif f3 fw4">New project</h2>
+
+    <article class="pa1 black-80">
+      <form name="$ctrl.projectForm" accept-charset="utf-8" novalidate ng-submit="$ctrl.submitProject($event)">
+        <fieldset id="new-project" class="ba b--transparent ph0 mh0">
+          <legend class="ph0 mh0 fw6 clip">New project</legend>
+
+          <div class="cf">
+            <div class="fl">
+              <div class="" ng-class="{
+                  'has-error' : $ctrl.projectForm.title.$invalid && $ctrl.projectForm.title.$touched,
+                  'has-success': $ctrl.projectForm.title.$valid }">
+                <label class="db fw4 lh-copy f6" for="title">Title</label>
+                <input class="pa2 ba b--mid-gray br2 w-100 form-control" type="text" name="title" id="title" required ng-minlength=2 ng-maxlength=150 ng-model="$ctrl.data.title">
+              </div>
+
+              <div class="mt3" ng-class="{
+                  'has-error' : $ctrl.projectForm.link.$invalid && $ctrl.projectForm.link.$touched,
+                  'has-success': $ctrl.projectForm.link.$valid }">
+                <label class="db fw4 lh-copy f6" for="link">Link to deployed project</label>
+                <input class="pa2 ba b--mid-gray br2 w-100 form-control" type="url" name="link" id="link" required ng-minlength=2 ng-maxlength=60 ng-model="$ctrl.data.link">
+              </div>
+
+              <div class="mt3" ng-class="{
+                  'has-error' : $ctrl.projectForm.github.$invalid && $ctrl.projectForm.github.$touched,
+                  'has-success': $ctrl.projectForm.github.$valid }">
+                <label class="db fw4 lh-copy f6" for="github">Code (optional)</label>
+                <input class="pa2 ba b--mid-gray br2 w-100 form-control" type="url" name="github" id="github"  ng-model="$ctrl.data.github">
+              </div>
+            </div>
+
+<!-- this image will be filled by phantom js shot of project url -->
+            <div class="fr">
+              <a href="/" class="link mid-gray underline-hover ">
+                    <img src="https://api.adorable.io/avatars/200/sampleuser.png" alt="project landing page" />
+                  </a>
+            </div>
+          </div>
+
+
+          <div class="mt3" ng-class="{
+              'has-error' : $ctrl.projectForm.description.$invalid && $ctrl.projectForm.description.$touched,
+              'has-success': $ctrl.projectForm.description.$valid }">
+            <label class="db fw4 lh-copy f6" for="description">Project description</label>
+            <textarea id="description" name="description"
+            class="db border-box hover-black w-100 ba b--mid-gray pa2 br2 mb2 form-control" placeholder="" required ng-minlength=8 ng-model="$ctrl.data.description"></textarea>
+          </div>
+
+          <div class="mt3"ng-class="{
+              'has-error' : $ctrl.projectForm.questions.$invalid && $ctrl.projectForm.questions.$touched,
+              'has-success': $ctrl.projectForm.questions.$valid }">
+            <label class="db fw4 lh-copy f6" for="questions">Burning questions</label>
+            <textarea id="questions" name="questions"
+            class="db border-box hover-black w-100 ba b--mid-gray pa2 br2 mb2 form-control" placeholder="What aspects of user experience do you want to hear about? Any specific notes or instructions?" required ng-minlength=8 ng-model="$ctrl.data.questions"></textarea>
+          </div>
+
+
+        </fieldset>
+        <div class="mt3 w5-ns center">
+          <input class="bw0 br3 bg-mid-gray pa2-l pa1 near-white f6 fw1 tc bg-animate mr2 link" type="submit" value="submit" ng-disabled="$ctrl.projectForm.$invalid" ng-class="{
+            'disabled' : $ctrl.projectForm.$invalid,
+            'enabled' : $ctrl.projectForm.$valid }">
+          <input class="bw0 br3 bg-mid-gray pa2-l pa1 near-white f6 fw1 tc bg-animate hover-bg-green pointer link" type="reset" value="cancel" ng-click="$ctrl.cancel()">
+        </div>
+      </form>
+    </article>

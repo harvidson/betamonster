@@ -2,14 +2,16 @@
 'use strict';
 
 angular.module('app')
-  .component('reviewForm', {
+  .component('footerFrame', {
     controller,
-    templateUrl: '/reviews/review-form.template.html'
+    template: `
+
+
+    `
   })
 
   function controller() {
-    
+    const vm = this;
   }
 
-
-})();
+});

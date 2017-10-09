@@ -10,6 +10,11 @@
     $locationProvider.html5Mode(true)
 
     $stateProvider
+    //   .state({
+    //     name: 'footer',
+    //     abstract: true,
+    //     component: 'footerFrame',
+    //   })
       .state({
         name: 'home',
         url: '/',
@@ -34,6 +39,16 @@
         name: 'testDashboard',
         url: '/tester',
         component: 'tester',
+      })
+      .state({
+        name: 'projectForm',
+        url: '/new-project',
+        component: 'projectForm',
+      })
+      .state({
+        name: 'reviewForm',
+        url: '/new-review',
+        component: 'reviewForm'
       })
   }
 
