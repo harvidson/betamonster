@@ -2,16 +2,14 @@
 'use strict';
 
 angular.module('app')
-  .component('footerFrame', {
+  .component('framing', {
     controller,
-    template: `
-
-
-    `
+    templateUrl: '/js/frame.template.html'
   })
 
   function controller() {
     const vm = this;
+    console.log('framing')
   }
 
-});
+})();
