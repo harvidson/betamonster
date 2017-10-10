@@ -11,56 +11,68 @@
 
     $stateProvider
       .state({
-        name: 'framing',
-        component: 'framing',
+        name: 'landing',
+        component: 'landing',
+        abstract: true
+      })
+    $stateProvider
+      .state({
+        name: 'devFrame',
+        component: 'devFrame',
+        abstract: true
+      })
+    $stateProvider
+      .state({
+        name: 'testFrame',
+        component: 'testFrame',
         abstract: true
       })
       .state({
         name: 'home',
         url: '/',
         component: 'home',
-        parent: 'framing'
+        parent: 'landing'
       })
       .state({
         name: 'login',
         url: '/login',
         component: 'login',
-        // parent: 'framing'
+        parent: 'landing'
 
       })
       .state({
         name: 'signup',
         url: '/signup',
         component: 'signup',
-        parent: 'framing'
+        parent: 'landing'
 
       })
       .state({
         name: 'devDashboard',
         url: '/developer',
         component: 'developer',
-        // parent: 'framing'
+        parent: 'devFrame'
 
       })
       .state({
         name: 'testDashboard',
         url: '/tester',
         component: 'tester',
-        // parent: 'framing'
+        parent: 'testFrame'
 
       })
       .state({
         name: 'projectForm',
         url: '/new-project',
         component: 'projectForm',
-        // parent: 'framing'
+        parent: 'devFrame'
 
       })
       .state({
         name: 'reviewForm',
         url: '/new-review',
         component: 'reviewForm',
-        // parent: 'framing'
+        parent: 'testFrame'
 
       })
   }

@@ -1,0 +1,50 @@
+<header>
+  <div class="ph3-ns">
+    <div class="cf">
+      <div class="fl w-100 w-two-thirds pa2">
+        <div class="">
+          <a ui-sref="home" class="link"><h1 class="mid-gray f2-ns f3 fw3">betam<img src="images/monster.png" class="mw2" alt="betamonster logo"/>nster</h1></a>
+        </div>
+      </div>
+
+      <div class="fl w-100 w-third pa2 cf">
+        <div class="pv4 nav-buttons">
+          <a ui-sref="login" class="link"><button class="link bw0 br3 pa2-l pa1 f6 fw1 tc fr bg-mid-gray near-white bg-animate hover-bg-green pointer" ng-click="$ctrl.logout()">log out</button></a>
+          <a ui-sref="devDashboard" class="link"><button class="bw0 br3 bg-mid-gray pa2-l pa1 near-white f6 fw1 tc bg-animate hover-bg-green fr mr2 pointer link mr2">developer</button></a>
+          <a ui-sref="testDashboard" class="link"><button class="link bw0 br3 pa2-l pa1 f6 fw1 tc fr bg-navbar-active near-white bg-animate hover-bg-green mr2">tester</button></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="mw9 ph3-ns" ng-show="$ctrl.loggedIn">
+    <div class="fl cf w-100 pa2">
+      <a class="link mid-gray sans-serif f4 fw3 dib underline-hover accent pr3" href="/">projects</a>
+      <a class="link mid-gray sans-serif f4 fw2 underline-hover" href="/">my reviews</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <ui-view></ui-view>
+
+</main>
+
+<footer>
+  <div class="mw9 ph3-ns cf">
+    <div class="ph2-ns">
+      <div class="fl w-100 pa2">
+
+        <p class="f7">
+          Monster logo graphic by <a class="link dim mid-gray" href="https://thenounproject.com/nookfulloption">tnp_nookfulloption</a> from <a class="link dim mid-gray" href="https://thenounproject.com/">TheNounProject</a> is licensed under <a class="link dim mid-gray"
+            href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Logo made at <a class="link dim mid-gray" href="http://logomakr.com" title="Logo Maker">LogoMaker.com</a>.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+
+</footer>

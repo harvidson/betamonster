@@ -43,6 +43,18 @@ angular.module('app')
       })
     }
 
+    this.checkCookie = function() {
+      return $http.get('/api/token')
+      .then(function(response) {
+        console.log('logged in: ', response.data.result);
+        const result = response.data.result
+        return result
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
     this.logout = function() {
       console.log('inside logout');
       return $http.delete('/api/token')
