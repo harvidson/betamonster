@@ -7,12 +7,14 @@ angular.module('app')
     templateUrl: '/dashboards/developer.template.html'
   })
 
-  controller.$inject = ['$state', '$stateParams', '$http', 'authService'];
+  controller.$inject = ['$state', '$stateParams', '$http', 'authService', 'profileService'];
 
-  function controller($state, $stateParams, $http, authService) {
+  function controller($state, $stateParams, $http, authService, profileService) {
     const vm = this;
 
     vm.$onInit = function(){
+
+
 
     }
 

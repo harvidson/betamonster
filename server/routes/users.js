@@ -60,8 +60,8 @@ router.post('/', (req, res, next) => {
 });
 
 //get a single user
-router.get('/:id', (req, res, next) => {
-  const userId = Number.parseInt(req.claim.userId);
+router.get('/:id', authorize, (req, res, next) => {
+  const userId = Number.parseInt(req.params.id);
 
   console.log('userId ' + userId);
 
@@ -70,17 +70,17 @@ router.get('/:id', (req, res, next) => {
     return next(boom.create(404, 'Not found.'));
   }
 
-  //check is self--req.claim.userId needs to equal :id
-  // if (userId !== req.claim.userId) {
-  //   return next(boom.create(500, 'Internal server error.'))
-  // }
+  // check is self--req.claim.userId needs to equal :id
+  if (userId !== req.claim.userId) {
+    return next(boom.create(500, 'Internal server error.'))
+  }
 
   knex('users')
     .where('id', userId)
-    .select('is_developer')
     .first()
-    .then((isDev) => {
-      res.send(isDev)
+    .then((user) => {
+      user = camelizeKeys(user)
+      res.send(user)
     })
     .catch((err) => {
       return next(boom.create(500, 'Internal server error.'))

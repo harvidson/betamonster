@@ -8,10 +8,7 @@ angular.module('app')
 
   function service($http, $state) {
 
-    this.loggedIn = false;
-
     this.login = function(loginCred) {
-      console.log('inside login');
       return $http.post('/api/token/', loginCred)
       .then(function(response) {
 
@@ -40,16 +37,6 @@ angular.module('app')
       })
     }
 
-    this.checkCookie = function() {
-      return $http.get('/api/token')
-      .then(function(response) {
-        return response.data
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-    }
-
     this.logout = function() {
       console.log('inside logout');
       return $http.delete('/api/token')
@@ -63,6 +50,17 @@ angular.module('app')
       })
     }
 
+
+    this.checkCookie = function() {
+      return $http.get('/api/token')
+      .then(function(response) {
+        return response.data
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+ 
 
 
   }
