@@ -19,7 +19,6 @@ function controller($state, authService) {
 
   vm.submitLogin = function(e) {
     e.preventDefault()
-    console.log(vm.data);
 
     authService.login(vm.data)
     delete vm.data;

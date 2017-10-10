@@ -15,7 +15,6 @@ controller.$inject = ['authService']
     //nav bar switches:
     authService.checkCookie()
     .then((response) => {
-      console.log('response: ', response);
       vm.loggedIn = response;
       vm.loggedOut = !vm.loggedIn;
 
