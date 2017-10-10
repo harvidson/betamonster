@@ -38,8 +38,8 @@ controller.$inject = ['authService']
       vm.isTest = !vm.isDev;
     }
 
-    vm.stateChange = function() {
-      authService.checkCookie();
+    vm.logout = function(){
+      authService.logout()
     }
 
 

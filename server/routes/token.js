@@ -14,14 +14,16 @@ const router = express.Router()
 //check that user has cookie: returns T or F
 router.get('/', (req, res, next) => {
   jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, payload) => {
+          console.log('payload: ', payload);
     if (err) {
       return res.send({
-        result: false
+        authorized: false
       });
     }
     return res.send({
-      result: true,
-      userId: payload.userId
+      authorized: true,
+      userId: payload.userId,
+      isDev: payload.isDev
     });
   });
 });
@@ -35,7 +37,7 @@ router.post('/', (req, res, next) => {
     .where('email', req.body.email)
     .first()
     .then((row) => {
-      console.log(row);
+      // console.log(row);
       if (!row) {
         return next(boom.create(400, 'Invalid EMAIL or password.'))
       };
@@ -45,6 +47,7 @@ router.post('/', (req, res, next) => {
     .then(() => {
       const claim = {
         userId: user.id,
+        isDev: user.isDeveloper
       };
       const token = jwt.sign(claim, process.env.JWT_KEY, {
         expiresIn: '7 days'

@@ -14,15 +14,12 @@ angular.module('app')
       console.log('inside login');
       return $http.post('/api/token/', loginCred)
       .then(function(response) {
-        console.log('response after api call', response);
 
         //if someone has sent you a link, it would be nice if, after login, you get to go to that link
         //to make the below work, would have to do a get from the db to get 'isDeveloper'
         if (response.data.isDeveloper === true) {
-          console.log('developer');
           $state.go('devDashboard')
         } else {
-          console.log('tester');
           $state.go('testDashboard')
         }
         return response
@@ -46,9 +43,7 @@ angular.module('app')
     this.checkCookie = function() {
       return $http.get('/api/token')
       .then(function(response) {
-        console.log('logged in: ', response.data.result);
-        const result = response.data.result
-        return result
+        return response.data
       })
       .catch((err) => {
         console.log(err);

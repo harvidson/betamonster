@@ -10,7 +10,17 @@ const {
   decamelizeKeys
 } = require('humps');
 
-const router = express.Router()
+const router = express.Router();
+
+const authorize = function(req, res, next) {
+  jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, payload) => {
+    if (err) {
+      return next(boom.create(401, 'Unauthorized.'));
+    }
+    req.claim = payload;
+    next();
+  });
+};
 
 //register a new user
 router.post('/', (req, res, next) => {
@@ -46,6 +56,34 @@ router.post('/', (req, res, next) => {
     .catch((err) => {
       console.log(err);
       return next(boom.create(500, 'Internal server error from /users POST.'))
+    });
+});
+
+//get a single user
+router.get('/:id', (req, res, next) => {
+  const userId = Number.parseInt(req.claim.userId);
+
+  console.log('userId ' + userId);
+
+  if (Number.isNaN(userId) || userId < 0) {
+    console.log('weird userId');
+    return next(boom.create(404, 'Not found.'));
+  }
+
+  //check is self--req.claim.userId needs to equal :id
+  // if (userId !== req.claim.userId) {
+  //   return next(boom.create(500, 'Internal server error.'))
+  // }
+
+  knex('users')
+    .where('id', userId)
+    .select('is_developer')
+    .first()
+    .then((isDev) => {
+      res.send(isDev)
+    })
+    .catch((err) => {
+      return next(boom.create(500, 'Internal server error.'))
     });
 });
 
