@@ -21,6 +21,7 @@ const authorize = function(req, res, next) {
   });
 };
 
+//post a new review, as well as associated rows in reviews, questions, and reviews_questions tables
 router.post('/', authorize, (req, res, next) => {
   console.log(req.body);
   let project;
@@ -87,7 +88,17 @@ router.post('/', authorize, (req, res, next) => {
     });
 })
 
+router.get('/:id', authorize, (req, res, next) => {
+  const projectId = Number.parseInt(req.params.id);
+  console.log('looking for detail view of project ', projectId);
 
+  if (Number.isNaN(projectId) || projectId < 0) {
+    return next(boom.create(404, 'Not found.'));
+  }
+
+
+
+})
 
 
 

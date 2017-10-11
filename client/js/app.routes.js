@@ -75,6 +75,13 @@
         parent: 'testFrame'
 
       })
+      .state({
+        name: 'projectDetail',
+        url: 'developer/projects/:id',
+        component: 'projectDetail',
+        parent: 'devFrame'
+
+      })
   }
 
 }());
