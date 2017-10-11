@@ -76,7 +76,10 @@ router.post('/', authorize, (req, res, next) => {
           review_id: review_id,
           question_id: question[0].id
         }, '*')
+    })
+    .then(() => {
       res.send(project);
+
     })
     .catch((err) => {
       console.log(err);

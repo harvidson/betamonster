@@ -22,14 +22,11 @@
     }
 
     this.submitProject = function(project) {
-      console.log('this is project at projectsService ', project);
       return $http.post('/api/projects', project)
       .then(({data}) => {
-        console.log(data);
         return data
       })
       .catch((err) => {
-        console.log(err);
         console.log(err);
       })
     }
