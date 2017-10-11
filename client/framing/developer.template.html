@@ -17,12 +17,15 @@
     </div>
   </div>
 
-  <nav class="mw9 ph3-ns">
+  <nav class="mw9 ph3-ns cf">
     <div class="fl cf w-100 pa2">
-      <a class="link mid-gray sans-serif f4 fw3 dib underline-hover accent pr3" href="/">my projects</a>
-      <a class="link mid-gray sans-serif f4 fw2 underline-hover" href="/">new project</a>
+      <a ng-class="{active: $ctrl.activeButton === 'list'}" class="link mid-gray sans-serif f4 fw2 dib underline-hover pr3" href="#" ng-click="$ctrl.toMyProjects()">my projects</a>
+      <a ng-class="{active: $ctrl.activeButton === 'new'}" class="link mid-gray sans-serif f4 fw2 dib underline-hover pr3" href="#" ng-click="$ctrl.toForm()">new project</a>
+      <!-- TODO: hook up this nav option to dynamic project name -->
+      <a ng-class="{active: $ctrl.activeButton === 'detail'}" ng-show="$ctrl.projectDetail" class="link mid-gray sans-serif f4 fw2 dib underline-hover" href="#">[project detail name]</a>
     </div>
   </nav>
+
 </header>
 
 <main>

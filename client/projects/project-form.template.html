@@ -26,15 +26,15 @@
               <div class="mt3" ng-class="{
                   'has-error' : $ctrl.projectForm.github.$invalid && $ctrl.projectForm.github.$touched,
                   'has-success': $ctrl.projectForm.github.$valid }">
-                <label class="db fw4 lh-copy f6" for="github">Code (optional)</label>
+                <label class="db fw4 lh-copy f6" for="github">Github (optional)</label>
                 <input class="pa2 ba b--mid-gray br2 w-100 form-control" type="url" name="github" id="github"  ng-model="$ctrl.data.github">
               </div>
             </div>
 
-<!-- this image will be filled by phantom js shot of project url -->
             <div class="fr">
               <a href="/" class="link mid-gray underline-hover ">
-                    <img src="https://api.adorable.io/avatars/200/sampleuser.png" alt="project landing page" />
+                <!-- TODO: generate image of project landing page using phantom js -->
+                    <img src="http://lorempixel.com/300/300" alt="project landing page" />
                   </a>
             </div>
           </div>
@@ -53,7 +53,7 @@
               'has-success': $ctrl.projectForm.questions.$valid }">
             <label class="db fw4 lh-copy f6" for="questions">Burning questions</label>
             <textarea id="questions" name="questions"
-            class="db border-box hover-black w-100 ba b--mid-gray pa2 br2 mb2 form-control" placeholder="What aspects of user experience do you want to hear about? Any specific notes or instructions?" required ng-minlength=8 ng-model="$ctrl.data.questions"></textarea>
+            class="db border-box hover-black w-100 ba b--mid-gray pa2 br2 mb2 form-control" placeholder="Any testing priorities you want users to keep in mind? Specific notes or instructions?" required ng-minlength=8 ng-model="$ctrl.data.questions"></textarea>
           </div>
 
 

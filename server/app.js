@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
 // app.use('api/tester', require('./routes/tester'))
 app.use('/api/token', require('./routes/token'))
 app.use('/api/users', require('./routes/users'))
+app.use('/api/projects', require('./routes/projects'))
 
 app.use('*', function(req, res) {
   console.log('route not found');

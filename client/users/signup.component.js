@@ -20,11 +20,14 @@ function controller($state, authService) {
 
   vm.submitSignup = function(e) {
     e.preventDefault()
-    console.log(vm.data);
+    authService.signup(vm.data)
+    .then(() => {
+      vm.navigateToPage('login')
+    })
+    .catch((err) => {
+      console.log(err);
+    })
 
-    authService.signup(vm.data);
-
-    vm.navigateToPage('login')
 
     delete vm.data;
     vm.signupForm.$setPristine();

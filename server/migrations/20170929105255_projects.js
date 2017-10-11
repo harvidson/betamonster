@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
       .onDelete('CASCADE')
       .index();
     table.string('link').notNullable();
+    table.string('github');
     table.text('description').notNullable();
     table.integer('readiness').notNullable().defaultTo(1);
     table.string('image').notNullable();

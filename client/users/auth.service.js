@@ -29,7 +29,6 @@ angular.module('app')
     this.signup = function(signupData) {
       return $http.post('/api/users/', signupData)
       .then(function(response) {
-        console.log('response after api call', response);
         return response;
       })
       .catch((err) => {
@@ -41,8 +40,6 @@ angular.module('app')
       console.log('inside logout');
       return $http.delete('/api/token')
       .then(function(response) {
-        console.log('response after api call', response);
-
         return response
       })
       .catch((err) => {
@@ -62,7 +59,6 @@ angular.module('app')
     }
 
     this.getUser = function(id){
-      console.log(id);
       return $http.get(`/api/users/${id}`)
       .then(({data}) => {
         return data;

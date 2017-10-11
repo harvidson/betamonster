@@ -20,14 +20,12 @@ function controller(authService, profileService) {
     authService.checkCookie()
     .then((response) => {
       userId = response.userId
-      console.log(userId);
       return authService.getUser(userId)
     })
     .then((user) => {
       vm.firstName = user.firstName;
       vm.lastName = user.lastName;
       vm.email = user.email;
-      console.log(user);
     })
   }
 }

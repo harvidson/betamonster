@@ -1,3 +1,8 @@
+.link:focus {
+  outline: 0;
+}
+
+
 .accent {
   color: #82BD38
 }
@@ -29,4 +34,9 @@ input.ng-valid.ng-dirty {
 
 .enabled {
   cursor: pointer;
+}
+
+.active {
+  color: #82BD38;
+  font-weight: 300;
 }
