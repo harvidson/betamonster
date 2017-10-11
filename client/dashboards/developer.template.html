@@ -1,11 +1,10 @@
 <div class="mw9 ph3-ns cf">
 
-  <!-- template for profile component -->
   <div class="cf ph2-ns">
 
     <profile></profile>
 
-    
+
     <div class="fl w-100 w-two-thirds-ns pa2">
       <div class="bg-white pa4 br4">
         <div>
@@ -21,14 +20,12 @@
                   </tr>
                 </thead>
                 <tbody class="lh-copy">
-                  <tr class="stripe-dark">
-                    <td class="pa3"><a href="/" class="link mid-gray underline-hover">Seattle Stuffcycle</a></td>
-                    <td class="pa3 tr"><span class="br-100 bg-mid-gray tr white ph1">2</span></td>
-                  </tr>
-                  <tr class="stripe-dark">
-                    <td class="pa3"><a href="/" class="link mid-gray underline-hover">Favor Bank</a></td>
-                    <td class="pa3 tr"><span class="br-100 bg-mid-gray tr white ph1">3</span></td>
-                  </tr>
+                  <div ng-repeat="project in $ctrl.projects">
+
+                    <my-project project='project'></my-project>
+
+                  </div>
+
 
                 </tbody>
               </table>
@@ -39,8 +36,8 @@
 
 
           <hr />
-          <h3 class="mid-gray sans-serif f5 fw3">unpublished</h3>
-          <hr />
+          <!-- <h3 class="mid-gray sans-serif f5 fw3">unpublished</h3>
+          <hr /> -->
         </div>
       </div>
     </div>

@@ -53,15 +53,24 @@ angular.module('app')
 
     this.checkCookie = function() {
       return $http.get('/api/token')
-      .then(function(response) {
-        return response.data
+      .then(function({data}) {
+        return data
       })
       .catch((err) => {
         console.log(err);
       })
     }
- 
 
+    this.getUser = function(id){
+      console.log(id);
+      return $http.get(`/api/users/${id}`)
+      .then(({data}) => {
+        return data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
 
   }
 

@@ -21,7 +21,7 @@ function controller(authService, profileService) {
     .then((response) => {
       userId = response.userId
       console.log(userId);
-      return profileService.loadProfile(userId)
+      return authService.getUser(userId)
     })
     .then((user) => {
       vm.firstName = user.firstName;

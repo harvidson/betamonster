@@ -87,7 +87,34 @@ router.get('/:id', authorize, (req, res, next) => {
     });
 });
 
+//get all projects submitted by a user
+// /api/users/${id}/projects
+router.get('/:id/projects', authorize, (req, res, next) => {
+  const userId = Number.parseInt(req.params.id);
 
+  console.log('userId ' + userId);
+
+  if (Number.isNaN(userId) || userId < 0) {
+    console.log('weird userId');
+    return next(boom.create(404, 'Not found.'));
+  }
+
+  // check is self--req.claim.userId needs to equal :id
+  if (userId !== req.claim.userId) {
+    return next(boom.create(500, 'Internal server error.'))
+  }
+
+  knex('projects')
+    .where('user_id', userId)
+    .then((myRequests) => {
+      res.send(myRequests)
+    })
+    .catch((err) => {
+      return next(boom.create(500, 'Internal server error.'))
+    });
+
+
+})
 
 
 
