@@ -1,17 +1,6 @@
-<!-- search bar and drop-down to filter projects -->
-<div class="ph3-ns">
-  <ul class="list ph2">
-    <li role="presentation" class="dib">
-      <input ng-model="$ctrl.query" type="search" class="br2" placeholder=" filter">
-    </li>
-    <li class="dib">
-      <select ng-model="$ctrl.sortSelected" ng-options="option as 'Sort by ' + option for option in $ctrl.sortBy" class="" id="sort">
-    </select>
-    </li>
-  </ul>
-</div>
-
 <!-- listing of currently active projects -->
+
+
 <div class="mw9 ph3-ns cf">
   <div class="fl w-100 pa2">
     <div class="bg-white ph4 pb4 pt1 br4">
@@ -20,6 +9,8 @@
       <div class="overflow-auto">
         <table class="f6 w-100 mw8 center" cellspacing="0">
           <tbody class="lh-copy">
+
+            <!-- here's what was showing on landing page -->
             <tr class="">
               <td class="pa3 v-top bb b--black-20"><a href="/" class="link mid-gray underline-hover ">Seattle Stuffcycle</a></td>
               <td class="pa3 tr bb b--black-20">
@@ -29,6 +20,7 @@
               </td>
             </tr>
 
+
             <tr class="">
               <td class="pa3 v-top bb b--black-20"><a href="/" class="link mid-gray underline-hover">Favor Bank</a></td>
               <td class="pa3 tr bb b--black-20">
@@ -37,6 +29,17 @@
                     </a>
               </td>
             </tr>
+
+            <!-- here's what was shwoing on developer's dashboard -->
+            <tr class="stripe-dark">
+              <td class="pa3"><a href="/" class="link mid-gray underline-hover">Seattle Stuffcycle</a></td>
+              <td class="pa3 tr"><span class="br-100 bg-mid-gray tr white ph1">2</span></td>
+            </tr>
+            <tr class="stripe-dark">
+              <td class="pa3"><a href="/" class="link mid-gray underline-hover">Favor Bank</a></td>
+              <td class="pa3 tr"><span class="br-100 bg-mid-gray tr white ph1">3</span></td>
+            </tr>
+
           </tbody>
         </table>
       </div>
