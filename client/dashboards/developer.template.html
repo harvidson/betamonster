@@ -11,31 +11,46 @@
           <h2 class="mid-gray sans-serif f3 fw4">My Projects</h2>
 
           <div>
-            <div class="overflow-auto">
-              <table class="f6 w-100 mw8 center" cellspacing="0">
-                <thead class="lh-copy">
-                  <tr class="stripe-dark">
-                    <th class="tl bg-white mid-gray sans-serif f5 fw3">published</th>
-                    <th class="tl bg-white mid-gray sans-serif f5 fw3 tr">surveys in</th>
-                  </tr>
-                </thead>
-                <tbody class="lh-copy">
-                  <div ng-repeat="project in $ctrl.projects">
+            <div class="overflow-auto 6 w-100 mw8 center lh-copy">
+              <div class="cf">
+                <div class="tl f5 fw3 fl">
+                  published
+                </div>
+                <div class="tl f5 fw3 tr fr">
+                  surveys in
+                </div>
+                </div>
+                <hr />
+              <div ng-repeat="project in $ctrl.projects">
 
-                    <my-project project='project'></my-project>
+                <my-project project='project'></my-project>
 
-                  </div>
+              </div>
 
 
-                </tbody>
-              </table>
             </div>
           </div>
+<!--
+          <table class="f6 w-100 mw8 center" cellspacing="0">
+            <thead class="lh-copy">
+              <tr class="stripe-dark">
+                <th class="tl bg-white mid-gray sans-serif f5 fw3">published</th>
+                <th class="tl bg-white mid-gray sans-serif f5 fw3 tr">surveys in</th>
+              </tr>
+            </thead>
+            <tbody class="lh-copy">
+              <div ng-repeat="project in $ctrl.projects">
+
+                <my-project project='project'></my-project>
+
+              </div>
+
+
+            </tbody>
+          </table> -->
 
 
 
-
-          <hr />
           <!-- <h3 class="mid-gray sans-serif f5 fw3">unpublished</h3>
           <hr /> -->
         </div>

@@ -14,7 +14,6 @@ const router = express.Router()
 //check that user has cookie: returns T or F
 router.get('/', (req, res, next) => {
   jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, payload) => {
-          console.log('payload: ', payload);
     if (err) {
       return res.send({
         authorized: false
@@ -30,7 +29,6 @@ router.get('/', (req, res, next) => {
 
 //on login, check email and password credentials
 router.post('/', (req, res, next) => {
-  console.log('checking token');
   let user;
 
   knex('users')
@@ -72,7 +70,6 @@ router.post('/', (req, res, next) => {
 
 //on logout, delete cookie
 router.delete('/', (req, res, next) => {
-  console.log('inside token/delete');
   res.clearCookie('token');
   res.end();
 })

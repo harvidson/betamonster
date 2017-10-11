@@ -49,7 +49,6 @@ router.post('/', (req, res, next) => {
     })
     .then((newUser) => {
       let user = camelizeKeys(newUser[0]);
-      console.log(user);
       delete user.hashedPassword;
       res.send(user);
     })
@@ -62,8 +61,6 @@ router.post('/', (req, res, next) => {
 //get a single user
 router.get('/:id', authorize, (req, res, next) => {
   const userId = Number.parseInt(req.params.id);
-
-  console.log('userId ' + userId);
 
   if (Number.isNaN(userId) || userId < 0) {
     console.log('weird userId');
@@ -87,12 +84,10 @@ router.get('/:id', authorize, (req, res, next) => {
     });
 });
 
-//get all projects submitted by a user
-// /api/users/${id}/projects
+//get all projects submitted by a user, along with a count of reviews in for each one
 router.get('/:id/projects', authorize, (req, res, next) => {
   const userId = Number.parseInt(req.params.id);
-
-  console.log('userId ' + userId);
+  let numberReviews = 0;
 
   if (Number.isNaN(userId) || userId < 0) {
     console.log('weird userId');
@@ -104,16 +99,46 @@ router.get('/:id/projects', authorize, (req, res, next) => {
     return next(boom.create(500, 'Internal server error.'))
   }
 
-  knex('projects')
-    .where('user_id', userId)
-    .then((myRequests) => {
-      res.send(myRequests)
-    })
-    .catch((err) => {
-      return next(boom.create(500, 'Internal server error.'))
-    });
+  // knex('projects')
+  //   .where('user_id', userId)
+  //   .select('*')
+  //   .leftJoin('reviews', 'project_id', 'projects.id')
+  //
+  //
+  //   .then((myProjects) => {
+  //     myProjects.map((project) => {
+  //       // return countReviews(project.id)
+  //       // .then((numberReviews) => {
+  //       //   project.numberReviews = numberReviews;
+  //       //
+  //       // })
+  //       return project
+  //     })
+  //     res.send(myProjects)
+  //   })
+  //   .catch((err) => {
+  //     return next(boom.create(500, 'Internal server error.'))
+  //   });
 
+  knex.raw(`SELECT projects.id, projects.title, projects.link, projects.description, projects.readiness, projects.image, projects.published, projects.created_at, projects.updated_at, count(reviews.id) FROM projects LEFT JOIN reviews ON projects.id = reviews.project_id WHERE projects.user_id = ${userId} GROUP BY projects.id`)
+  .then((myProjects) => {
+    res.send(myProjects.rows)
+  })
+  .catch((err) => {
+    console.log(err);
+    return next(boom.create(500, 'Internal server error.'))
+  });
 
+  //
+  // function countReviews(projectId) {
+  //   return knex('reviews')
+  //     .where('project_id', projectId)
+  //     .then((reviews) => {
+  //       console.log('reviews.length ', reviews.length);
+  //       return reviews.length
+  //
+  //     })
+  // }
 })
 
 

@@ -26,7 +26,15 @@ const answersList = [
     created_at: new Date('2017-09-26 14:26:16 UTC'),
     updated_at: new Date('2017-09-26 14:26:16 UTC'),
     deleted_at: null
-  }
+  },
+  { id: 4,
+    review_question_id: 4,
+    user_id: 4,
+    answer: 'ditto.',
+    created_at: new Date('2017-09-25 14:26:16 UTC'),
+    updated_at: new Date('2017-09-25 14:26:16 UTC'),
+    deleted_at: null
+  },
 ]
 
 exports.seed = function(knex, Promise) {

@@ -13,7 +13,8 @@ angular.module('app')
     const vm = this;
 
     vm.$onInit = function(){
-      vm.projects;
+      vm.projects = [];
+      vm.project = {};
       let userId;
 
       authService.checkCookie()
