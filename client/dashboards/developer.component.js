@@ -7,9 +7,9 @@ angular.module('app')
     templateUrl: '/dashboards/developer.template.html'
   })
 
-  controller.$inject = ['$state', '$stateParams', '$http', 'authService', 'projectsService'];
+  controller.$inject = ['authService', 'projectsService'];
 
-  function controller($state, $stateParams, $http, authService, projectsService) {
+  function controller(authService, projectsService) {
     const vm = this;
 
     vm.$onInit = function(){

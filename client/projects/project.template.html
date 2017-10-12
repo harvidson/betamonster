@@ -1,55 +1,9 @@
-<!-- listing of currently active projects -->
-
-
-<div class="mw9 ph3-ns cf">
-  <div class="fl w-100 pa2">
-    <div class="bg-white ph4 pb4 pt1 br4">
-      <h2 class="mid-gray sans-serif f3 fw4">Projects</h2>
-
-      <div class="overflow-auto">
-        <table class="f6 w-100 mw8 center" cellspacing="0">
-          <tbody class="lh-copy">
-
-            <!-- here's what was showing on landing page -->
-            <tr class="">
-              <td class="pa3 v-top bb b--black-20"><a href="/" class="link mid-gray underline-hover ">Seattle Stuffcycle</a></td>
-              <td class="pa3 tr bb b--black-20">
-                <a href="/" class="link mid-gray underline-hover ">
-                      <img src="https://api.adorable.io/avatars/100/sampleuser.png" alt="project landing page" />
-                    </a>
-              </td>
-            </tr>
-
-
-            <tr class="">
-              <td class="pa3 v-top bb b--black-20"><a href="/" class="link mid-gray underline-hover">Favor Bank</a></td>
-              <td class="pa3 tr bb b--black-20">
-                <a href="/" class="link mid-gray underline-hover ">
-                      <img src="https://api.adorable.io/avatars/100/sampleuser.png" alt="project landing page" />
-                    </a>
-              </td>
-            </tr>
-
-            <!-- here's what was shwoing on developer's dashboard -->
-            <tr class="stripe-dark">
-              <td class="pa3"><a href="/" class="link mid-gray underline-hover">Seattle Stuffcycle</a></td>
-              <td class="pa3 tr"><span class="br-100 bg-mid-gray tr white ph1">2</span></td>
-            </tr>
-            <tr class="stripe-dark">
-              <td class="pa3"><a href="/" class="link mid-gray underline-hover">Favor Bank</a></td>
-              <td class="pa3 tr"><span class="br-100 bg-mid-gray tr white ph1">3</span></td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-    </div>
+<div class="cf">
+  <div class="pa3 fl">
+    <!-- TODO: create a new mid-nav option for ng-click -->
+    <a ui-sref='projectDetail({ id: $ctrl.project.id })' class="link mid-gray underline-hover">{{ $ctrl.project.title }}</a>
+  </div>
+  <div class="pa3 fr tr" ng-show="$ctrl.myProjects">
+    <span class="br-100 bg-mid-gray tr white ph1">{{ $ctrl.project.count }}</span>
   </div>
 </div>
-
-
-<!-- blank, 1/3 page div: -->
-<!-- <div class="fl w-100 w-third-ns pa2">
-  <div class="bg-white pv4"></div>
-</div> -->

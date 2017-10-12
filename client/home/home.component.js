@@ -7,13 +7,18 @@ angular.module('app')
     templateUrl: '/home/home.template.html'
   })
 
-  // controller.$inject = ['$state', '$stateParams', '$http'];
+  controller.$inject = ['projectsService'];
 
-  function controller() {
+  function controller(projectsService) {
     const vm = this;
+    vm.landing = true;
+    vm.projects = [];
 
     vm.$onInit = function(){
-
+      projectsService.getProjects()
+      .then((projects) => {
+        vm.projects = projects
+      })
     }
   }
 

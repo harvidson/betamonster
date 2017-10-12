@@ -4,6 +4,9 @@
 angular.module('app')
 .component('project', {
   controller,
+  bindings: {
+     project: '<'
+   },
   templateUrl: '/projects/project.template.html'
 })
 

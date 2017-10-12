@@ -88,6 +88,18 @@ router.post('/', authorize, (req, res, next) => {
     });
 })
 
+router.get('/', (req, res, next) => {
+  knex('projects')
+    .where('published', true)
+    .then((projects) => {
+      res.send(projects)
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(boom.create(500, 'Internal server error from /users POST.'))
+    });
+})
+
 router.get('/:id', authorize, (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
   console.log('looking for detail view of project ', projectId);
@@ -96,9 +108,9 @@ router.get('/:id', authorize, (req, res, next) => {
     return next(boom.create(404, 'Not found.'));
   }
 
-
-
 })
+
+
 
 
 
