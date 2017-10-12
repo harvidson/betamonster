@@ -84,7 +84,7 @@ router.post('/', authorize, (req, res, next) => {
     })
     .catch((err) => {
       console.log(err);
-      return next(boom.create(500, 'Internal server error from /users POST.'))
+      return next(boom.create(500, 'Internal server error from /projects POST.'))
     });
 })
 
@@ -96,7 +96,7 @@ router.get('/', (req, res, next) => {
     })
     .catch((err) => {
       console.log(err);
-      return next(boom.create(500, 'Internal server error from /users POST.'))
+      return next(boom.create(500, 'Internal server error from /projects GET.'))
     });
 })
 
@@ -108,10 +108,55 @@ router.get('/:id', authorize, (req, res, next) => {
     return next(boom.create(404, 'Not found.'));
   }
 
+  knex('projects')
+    .where('id', projectId)
+    .first()
+    .then((project) => {
+      res.send(project)
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(boom.create(500, 'Internal server error from /projects/:id GET.'))
+    });
 })
 
+router.get('/:id/question', authorize, (req, res, next) => {
+  const projectId = Number.parseInt(req.params.id);
+  console.log('looking for detail view of project ', projectId);
+
+  if (Number.isNaN(projectId) || projectId < 0) {
+    return next(boom.create(404, 'Not found.'));
+  }
+
+  return knex('reviews')
+    .where('project_id', projectId)
+    //TODO: revise this to allow for multiple review batches to be submitted for one project; needs to return multiple rows, then use a map function in next .then to grab all the questions
+    .first()
+    .then((review) => {
+      console.log('review ', review);
+      console.log('review.id ', review.id);
 
 
+      return knex('reviews_questions')
+      .where('review_id', review.id)
+      .first()
+    })
+    .then((row) => {
+      console.log('row ', row);
+
+      return knex('questions')
+      .where('id', row.question_id)
+      .first()
+    })
+    .then((question) => {
+      console.log('question ', question);
+      res.send(question)
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(boom.create(500, 'Internal server error from /projects/:id/question GET.'))
+    });
+})
 
 
 

@@ -10,14 +10,19 @@ angular.module('app')
   templateUrl: '/projects/my-project.template.html'
 })
 
-controller.$inject = ['$state', '$stateParams', '$http'];
+controller.$inject = ['$state', 'projectsService'];
 
-function controller($state, $stateParams, $http) {
+function controller($state, projectsService) {
   const vm = this;
+  vm.project;
 
   vm.$onInit = function(){
     vm.myProjects = true;
 
+  }
+
+  vm.toDetail = function() {
+    $state.go('projectDetail', { id: vm.project.id })
   }
 }
 

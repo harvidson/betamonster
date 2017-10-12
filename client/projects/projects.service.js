@@ -18,6 +18,17 @@
         })
     }
 
+    this.getProjectById = function(projectId) {
+      console.log(projectId);
+      return $http.get(`/api/projects/${projectId}`)
+        .then(({ data }) => {
+          return data
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+
 // TODO: count here is counting 'reviews' (as in review batches, not number of answers associated with the question associated with the review)
     this.getMyProjects = function(userId) {
       return $http.get(`/api/users/${userId}/projects`)
@@ -29,7 +40,6 @@
         })
     }
 
-
     this.submitProject = function(project) {
       return $http.post('/api/projects', project)
       .then(({data}) => {
@@ -40,7 +50,16 @@
       })
     }
 
-
+    this.getQuestion = function(projectId) {
+      return $http.get(`/api/projects/${projectId}/question`)
+      .then(({data}) => {
+        console.log(data);
+        return data.question;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
 
 
   }
