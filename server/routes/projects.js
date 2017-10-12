@@ -131,13 +131,13 @@ router.get('/:id/question', (req, res, next) => {
     .first()
     .then((review) => {
       return knex('reviews_questions')
-      .where('review_id', review.id)
-      .first()
+        .where('review_id', review.id)
+        .first()
     })
     .then((row) => {
       return knex('questions')
-      .where('id', row.question_id)
-      .first()
+        .where('id', row.question_id)
+        .first()
     })
     .then((question) => {
       res.send(question)
@@ -183,6 +183,8 @@ router.delete('/:id', authorize, (req, res, next) => {
 
 router.get('/:id/reviews', authorize, (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
+  let answers;
+  const promises = [];
 
   if (Number.isNaN(projectId) || projectId < 0) {
     return next(boom.create(404, 'Not found.'));
@@ -192,37 +194,64 @@ router.get('/:id/reviews', authorize, (req, res, next) => {
     .where('id', projectId)
     .first()
     .then((project) => {
-      console.log('project ', project);
       //check whether project belongs to current user
       if (!project || project.user_id !== req.claim.userId) {
         return next(boom.create(400, 'Bad request.'))
       }
       // TODO: revise so that site can accomodate multiple batches of reviews
       return knex('reviews')
-      .where('project_id', projectId)
-      .first()
+        .where('project_id', projectId)
+        .first()
     })
     .then((review) => {
-      console.log('review ', review);
       return knex('reviews_questions')
-      .where('review_id', review.id)
-      .first()
+        .where('review_id', review.id)
+        .first()
     })
     .then((row) => {
-      console.log('reviews_questions row ', row);
       return knex('answers')
-      .where('review_question_id', row.id)
+        .where('review_question_id', row.id)
     })
-    .then((answers) => {
-      console.log(answers);
+    .then((answerData) => {
+      answers = answerData;
+
+      //get user data on reviewer for each review in answers
+      for (const answer of answers) {
+        promises.push(promisify(answer))
+      }
+      return Promise.all(promises);
+    })
+    .then((reviewerData) => {
+      console.log(reviewerData);
+      for (let i = 0; i < reviewerData.length; i++) {
+        answers[i].reviewerFirstName = reviewerData[i].first_name;
+        answers[i].reviewerLastName = reviewerData[i].last_name;
+        answers[i].reviewerEmail = reviewerData[i].email;
+      }
+    })
+    .then(() => {
       res.send(answers)
     })
     .catch((err) => {
       console.log(err);
       return next(boom.create(500, 'Internal server error from /projects/:id/reviews GET.'))
     });
-
 })
 
+function promisify(answer) {
+  return new Promise((resolve, reject) => {
+    knex('users')
+      .where('id', answer.user_id)
+      .select('first_name', 'last_name', 'email')
+      .then((data) => {
+        resolve(data[0]);
+      })
+      .catch((err) => {
+        reject(err);
+      })
+  })
+}
 
- module.exports = router
+
+
+module.exports = router
