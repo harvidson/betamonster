@@ -21,13 +21,11 @@ const authorize = function(req, res, next) {
   });
 };
 
-//post a new review, as well as associated rows in reviews, questions, and reviews_questions tables
+//post a new project, as well as associated rows in reviews, questions, and reviews_questions tables
 router.post('/', authorize, (req, res, next) => {
-  console.log(req.body);
   let project;
   let review_id;
 
-  // inside projects/ POST route
   //check to see whether there's already a project by that name in the database
   knex('projects')
     .where('title', req.body.title)
@@ -49,9 +47,7 @@ router.post('/', authorize, (req, res, next) => {
         }, '*')
     })
     .then((newProject) => {
-      console.log('newProject :', newProject);
       project = camelizeKeys(newProject[0]);
-      console.log(project);
 
       //create new batch of reviews for this project
       return knex('reviews')
@@ -61,9 +57,7 @@ router.post('/', authorize, (req, res, next) => {
 
     })
     .then((review) => {
-      console.log('review: ', review);
       review_id = review[0].id
-      console.log('review_id ', review_id);
       //create new question for this project
       return knex('questions')
         .insert({
@@ -71,7 +65,6 @@ router.post('/', authorize, (req, res, next) => {
         }, '*')
     })
     .then((question) => {
-      console.log('question: ', question);
       return knex('reviews_questions')
         .insert({
           review_id: review_id,
@@ -88,9 +81,13 @@ router.post('/', authorize, (req, res, next) => {
     });
 })
 
+//get all current, published projects
 router.get('/', (req, res, next) => {
   knex('projects')
-    .where('published', true)
+    .where({
+      published: true,
+      deleted_at: null
+    })
     .then((projects) => {
       res.send(projects)
     })
@@ -100,9 +97,9 @@ router.get('/', (req, res, next) => {
     });
 })
 
+//get a specific project by id
 router.get('/:id', authorize, (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
-  console.log('looking for detail view of project ', projectId);
 
   if (Number.isNaN(projectId) || projectId < 0) {
     return next(boom.create(404, 'Not found.'));
@@ -120,9 +117,9 @@ router.get('/:id', authorize, (req, res, next) => {
     });
 })
 
+//get the question associated with a project with id
 router.get('/:id/question', authorize, (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
-  console.log('looking for detail view of project ', projectId);
 
   if (Number.isNaN(projectId) || projectId < 0) {
     return next(boom.create(404, 'Not found.'));
@@ -133,23 +130,16 @@ router.get('/:id/question', authorize, (req, res, next) => {
     //TODO: revise this to allow for multiple review batches to be submitted for one project; needs to return multiple rows, then use a map function in next .then to grab all the questions
     .first()
     .then((review) => {
-      console.log('review ', review);
-      console.log('review.id ', review.id);
-
-
       return knex('reviews_questions')
       .where('review_id', review.id)
       .first()
     })
     .then((row) => {
-      console.log('row ', row);
-
       return knex('questions')
       .where('id', row.question_id)
       .first()
     })
     .then((question) => {
-      console.log('question ', question);
       res.send(question)
     })
     .catch((err) => {
@@ -158,7 +148,43 @@ router.get('/:id/question', authorize, (req, res, next) => {
     });
 })
 
+router.delete('/:id', authorize, (req, res, next) => {
+  const projectId = Number.parseInt(req.params.id);
 
+  if (Number.isNaN(projectId) || projectId < 0) {
+    return next(boom.create(404, 'Not found.'));
+  }
+
+  knex('projects')
+    .where('id', projectId)
+    .first()
+    .then((project) => {
+      console.log('project ', project);
+      //check whether project belongs to current user
+      //check is self--req.claim.userId needs to equal :id
+      if (!project || project.user_id !== req.claim.userId) {
+        return next(boom.create(400, 'Bad request.'))
+      }
+
+      return knex('projects')
+        .where('id', projectId)
+        .update({
+          deleted_at: new Date()
+        }, '*')
+    })
+    .then((project) => {
+      console.log('project to delete ', project);
+      delete project.id;
+      delete project.user_id;
+      res.send(project)
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(boom.create(500, 'Internal server error from /projects/:id DELETE.'))
+    });
+
+
+})
 
 
  module.exports = router

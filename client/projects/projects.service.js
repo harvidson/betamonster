@@ -19,7 +19,6 @@
     }
 
     this.getProjectById = function(projectId) {
-      console.log(projectId);
       return $http.get(`/api/projects/${projectId}`)
         .then(({ data }) => {
           return data
@@ -49,6 +48,16 @@
         console.log(err);
       })
     }
+    this.deleteProject = function(id) {
+      return $http.delete(`api/projects/${id}`)
+      .then(({data}) => {
+        console.log(data);
+        // return data
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
 
     this.getQuestion = function(projectId) {
       return $http.get(`/api/projects/${projectId}/question`)
@@ -60,6 +69,7 @@
         console.log(err);
       })
     }
+
 
 
   }

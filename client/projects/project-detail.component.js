@@ -51,7 +51,14 @@ angular.module('app')
     }
 
     vm.delete = function() {
-      
+      projectsService.deleteProject(vm.project.id)
+      // .then((reponse) => {
+      //   console.log(response);
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // })
+
     }
 
   }
