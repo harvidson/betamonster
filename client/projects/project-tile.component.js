@@ -39,10 +39,26 @@ angular.module('app')
         console.log(err);
       })
 
+    }
 
+    // TODO: add edit
+    vm.edit = function() {
 
+    }
 
+    // TODO: add unpublish; filter results on devDashboard and landing so that unpublished either don't show or show under their own heading
+    vm.unpublish = function() {
 
+    }
+
+    vm.delete = function() {
+      projectsService.deleteProject(vm.project.id)
+      .then((reponse) => {
+        $state.go('devDashboard')
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     }
 
   }

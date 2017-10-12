@@ -28,9 +28,9 @@ const answersList = [
     deleted_at: null
   },
   { id: 4,
-    review_question_id: 4,
+    review_question_id: 1,
     user_id: 4,
-    answer: 'ditto.',
+    answer: 'ditto. It\'s all been said.',
     created_at: new Date('2017-09-25 14:26:16 UTC'),
     updated_at: new Date('2017-09-25 14:26:16 UTC'),
     deleted_at: null

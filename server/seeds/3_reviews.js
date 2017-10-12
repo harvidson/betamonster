@@ -21,14 +21,7 @@ const reviewList = [
     created_at: new Date('2017-09-23 14:26:16 UTC'),
     updated_at: new Date('2017-09-23 14:26:16 UTC'),
     deactivated_at: null
-  },
-  {
-    id: 4,
-    project_id: 1,
-    created_at: new Date('2017-09-03 14:26:16 UTC'),
-    updated_at: new Date('2017-09-03 14:26:16 UTC'),
-    deactivated_at: null
-  },
+  }
 ]
 
 

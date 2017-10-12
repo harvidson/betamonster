@@ -17,6 +17,7 @@ angular.module('app')
       vm.data.image = 'https://upload.wikimedia.org/wikipedia/en/3/3a/Feral_goat_in_Aruba.JPG'
       projectsService.submitProject(vm.data)
       .then((project) => {
+        $state.go('devDashboard')
         console.log('heres the new project submitted ', project);
       })
       .catch((err) => {

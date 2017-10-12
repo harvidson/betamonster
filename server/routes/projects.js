@@ -179,7 +179,48 @@ router.delete('/:id', authorize, (req, res, next) => {
       console.log(err);
       return next(boom.create(500, 'Internal server error from /projects/:id DELETE.'))
     });
+})
 
+router.get('/:id/reviews', authorize, (req, res, next) => {
+  const projectId = Number.parseInt(req.params.id);
+
+  if (Number.isNaN(projectId) || projectId < 0) {
+    return next(boom.create(404, 'Not found.'));
+  }
+
+  knex('projects')
+    .where('id', projectId)
+    .first()
+    .then((project) => {
+      console.log('project ', project);
+      //check whether project belongs to current user
+      if (!project || project.user_id !== req.claim.userId) {
+        return next(boom.create(400, 'Bad request.'))
+      }
+      // TODO: revise so that site can accomodate multiple batches of reviews
+      return knex('reviews')
+      .where('project_id', projectId)
+      .first()
+    })
+    .then((review) => {
+      console.log('review ', review);
+      return knex('reviews_questions')
+      .where('review_id', review.id)
+      .first()
+    })
+    .then((row) => {
+      console.log('reviews_questions row ', row);
+      return knex('answers')
+      .where('review_question_id', row.id)
+    })
+    .then((answers) => {
+      console.log(answers);
+      res.send(answers)
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(boom.create(500, 'Internal server error from /projects/:id/reviews GET.'))
+    });
 
 })
 

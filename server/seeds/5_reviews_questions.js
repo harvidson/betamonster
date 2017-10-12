@@ -12,11 +12,7 @@ const reviewsQuestionsList = [
   { id: 3,
     review_id: 3,
     question_id: 3
-  },
-  { id: 4,
-    review_id: 4,
-    question_id: 1
-  },
+  }
 
 ]
 
