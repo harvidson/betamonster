@@ -76,9 +76,9 @@
 
       })
       .state({
-        name: 'projectDetail',
+        name: 'myProjectDetail',
         url: 'developer/projects/:id',
-        component: 'projectDetail',
+        component: 'myProjectDetail',
         parent: 'devFrame'
 
       })

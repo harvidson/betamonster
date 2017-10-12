@@ -98,7 +98,7 @@ router.get('/', (req, res, next) => {
 })
 
 //get a specific project by id
-router.get('/:id', authorize, (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
 
   if (Number.isNaN(projectId) || projectId < 0) {
@@ -118,7 +118,7 @@ router.get('/:id', authorize, (req, res, next) => {
 })
 
 //get the question associated with a project with id
-router.get('/:id/question', authorize, (req, res, next) => {
+router.get('/:id/question', (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
 
   if (Number.isNaN(projectId) || projectId < 0) {
@@ -159,9 +159,7 @@ router.delete('/:id', authorize, (req, res, next) => {
     .where('id', projectId)
     .first()
     .then((project) => {
-      console.log('project ', project);
       //check whether project belongs to current user
-      //check is self--req.claim.userId needs to equal :id
       if (!project || project.user_id !== req.claim.userId) {
         return next(boom.create(400, 'Bad request.'))
       }
@@ -173,7 +171,6 @@ router.delete('/:id', authorize, (req, res, next) => {
         }, '*')
     })
     .then((project) => {
-      console.log('project to delete ', project);
       delete project.id;
       delete project.user_id;
       res.send(project)

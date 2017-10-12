@@ -37,7 +37,6 @@ angular.module('app')
     }
 
     this.logout = function() {
-      console.log('inside logout');
       return $http.delete('/api/token')
       .then(function(response) {
         return response

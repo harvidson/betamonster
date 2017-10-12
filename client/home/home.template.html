@@ -27,8 +27,10 @@
             </div>
             </div>
             <hr />
-          <div ng-repeat="project in $ctrl.projects">
 
+
+          <div ng-repeat="project in $ctrl.projects">
+<!-- TODO: reusing this component isn't working; prob need to duplicate -->
             <project project='project'></project>
 
           </div>

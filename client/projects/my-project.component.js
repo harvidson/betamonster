@@ -22,7 +22,7 @@ function controller($state, projectsService) {
   }
 
   vm.toDetail = function() {
-    $state.go('projectDetail', { id: vm.project.id })
+    $state.go('myProjectDetail', { id: vm.project.id })
   }
 }
 
