@@ -10,9 +10,9 @@ angular.module('app')
   templateUrl: '/projects/project.template.html'
 })
 
-controller.$inject = ['$state', '$stateParams', '$http'];
+controller.$inject = ['$state', '$stateParams'];
 
-function controller($state, $stateParams, $http) {
+function controller($state, $stateParams) {
   const vm = this;
 
   vm.$onInit = function(){

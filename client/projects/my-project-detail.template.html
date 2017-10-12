@@ -9,21 +9,21 @@
       <div class="bg-white pa4 br4">
         <div>
           <h2 class="mid-gray sans-serif f3 fw4">User Feedback</h2>
-
           <div>
-            <div class="overflow-auto 6 w-100 mw8 center lh-copy">
-                <div class="tl sans-serif f4 fw3 mid-gray">
-                  Summary
-                </div>
-                <div>
-                  <div ng-repeat="review in $ctrl.reviews">
+            <div ng-repeat="review in $ctrl.reviews">
 
-                    <review review='review'></review>
+              <review review='review'></review>
 
-                  </div>
-                </div>
             </div>
           </div>
+
+          <div class="overflow-auto 6 w-100 mw8 center lh-copy">
+            <div class="tl sans-serif f4 fw3 mid-gray">
+              Summary
+            </div>
+
+          </div>
+
         </div>
       </div>
     </div>
