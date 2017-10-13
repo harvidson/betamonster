@@ -17,6 +17,7 @@ exports.up = function(knex, Promise) {
       .index();
     table.text('title').notNullable();
     table.text('answer').notNullable();
+    table.boolean('contact_okay').notNullable().defaultTo(true);
     table.timestamps(true, true);
     table.timestamp('deleted_at').defaultTo(null);
     table.text('watson_analysis');

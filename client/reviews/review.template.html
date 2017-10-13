@@ -2,28 +2,29 @@
 
   <div class="fl pl3 w-80-ns">
     <h3 class="accent f5 fw2">{{ $ctrl.review.title }}</h3>
+    <!-- TODO: add moment.js time of post -->
     <div class="f6 ">
       {{ $ctrl.review.answer }}
     </div>
   </div>
 
 
-  <div class="w-20-ns fr">
+  <div class="w-20-ns fr pt3">
 
-    <div class="br-100 db fr tc mb1">
-      <img ng-src="https://api.adorable.io/avatars/40/{{ $ctrl.review.reviewerEmail }}" alt="reviewer avatar" />
+    <div class="center mb1">
+      <img ng-src="https://api.adorable.io/avatars/40/{{ $ctrl.review.reviewerEmail }}" alt="reviewer avatar" class="tc center br-100 "/>
     </div>
 
-    <div class="tc mb1">
+    <div class="f7 center mb1">
       <p class="tc">
         {{ $ctrl.review.reviewerFirstName }} {{ $ctrl.review.reviewerLastName }}
       </p>
     </div>
 
-    <div class="ph1 fw1 white fr tc mb1">
-      <a ng-href="mailto:{{ $ctrl.review.reviewerEmail }}" target="_blank" class="link white bg-mid-gray br3 pa1 ">email</a>
+    <div class="ph1 fw1 white tc mb1 center">
+      <a ng-href="mailto:{{ $ctrl.review.reviewerEmail }}" target="_blank" class="link bg-mid-gray near-white bg-animate hover-bg-green pointerf7 br3 pa1 ">email</a>
     </div>
-    
+
   </div>
 </div>
 

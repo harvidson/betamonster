@@ -5,6 +5,7 @@ const usersList = [
     first_name: 'Snooty',
     last_name: 'Baronet',
     email: 'snoots@behavior.com',
+    github: null,
     hashed_password: '$2a$12$oEnJjrb2XsPOTGhrn0o21.Ck5qiOXF4OIXes1rjCrbQJlRlSwoTVW', //failbetter
     avatar: 'https://api.adorable.io/avatars/200/snoots@behavior.com.png',
     is_developer: false
@@ -14,6 +15,7 @@ const usersList = [
     first_name: 'Iris',
     last_name: 'Storm',
     email: 'flapper@hispanosuiza.com',
+    github: null,
     hashed_password: '$2a$12$oEnJjrb2XsPOTGhrn0o21.Ck5qiOXF4OIXes1rjCrbQJlRlSwoTVW', //failbetter
     avatar: 'https://api.adorable.io/avatars/200/flapper@hispanosuiza.com.png',
     is_developer: true
@@ -23,6 +25,7 @@ const usersList = [
     first_name: 'Dorothy',
     last_name: 'Parker',
     email: 'dorothy@freshhell.com',
+    github: null,
     hashed_password: '$2a$12$oEnJjrb2XsPOTGhrn0o21.Ck5qiOXF4OIXes1rjCrbQJlRlSwoTVW', //failbetter,
     avatar: 'https://api.adorable.io/avatars/200/dorothy@freshhell.com.png',
     is_developer: true
@@ -32,6 +35,7 @@ const usersList = [
     first_name: 'Ezra',
     last_name: 'Pound',
     email: 'leadingback@splendor.com',
+    github: null,
     hashed_password: '$2a$12$oEnJjrb2XsPOTGhrn0o21.Ck5qiOXF4OIXes1rjCrbQJlRlSwoTVW', //failbetter,
     avatar: 'https://api.adorable.io/avatars/200/leadingback@splendor.com.png',
     is_developer: true

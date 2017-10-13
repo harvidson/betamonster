@@ -37,11 +37,13 @@ router.post('/', (req, res, next) => {
     })
     .then((result) => {
       const email = req.body.email;
+
       return knex('users')
         .insert({
           first_name: req.body.firstName,
           last_name: req.body.lastName,
           email: email,
+          github: req.body.github,
           is_developer: req.body.isDeveloper,
           avatar: `https://api.adorable.io/avatars/150/${email}`,
           hashed_password: result

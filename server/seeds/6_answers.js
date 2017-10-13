@@ -6,6 +6,7 @@ const answersList = [
     user_id: 4,
     title: 'Not altogether indistinct',
     answer: 'As to Twentieth-first century web development, and the websites which I expect to see built during the next decade or so, it will, I think, move against poppy-cock, it will be harder and saner, it will be what Mr Hewlett calls \'nearer the bone\'. It will be as much like granite as it can be, its force will lie in its truth, its interpretative power (of course, digital force does always rest there); I mean it will not try to seem forcible by rhetorical din, and luxurious riot. We will have fewer painted adjectives impeding the shock and stroke of it. At least for myself, I want it so, austere, direct, free from emotional slither.',
+    contact_okay: true,
     created_at: new Date('2017-09-25 14:26:16 UTC'),
     updated_at: new Date('2017-09-25 14:26:16 UTC'),
     deleted_at: null
@@ -16,6 +17,7 @@ const answersList = [
     user_id: 3,
     title: 'Soapbox',
     answer: 'The site\'s fine. But while we\'er talking politics, blast first (from politeness) England. . . . Luxury, sport, the famous English "Humour," the thrilling ascendancy and idée fixe of Class, producing the most Intense snobbery in the World; heavy stagnant pools of Saxon blood, incapable of any thing but the song of a frog, in home-counties: — these phenomena give England a peculiar distinction in the wrong sense, among the nations.',
+    contact_okay: true,
     created_at: new Date('2017-09-26 14:26:16 UTC'),
     updated_at: new Date('2017-09-26 14:26:16 UTC'),
     deleted_at: null
@@ -26,15 +28,17 @@ const answersList = [
     user_id: 3,
     title: 'Plagiarized from someplace',
     answer: 'The site\'s fine. But while we\'er talking politics, blast first (from politeness) England. . . . Luxury, sport, the famous English "Humour," the thrilling ascendancy and idée fixe of Class, producing the most Intense snobbery in the World; heavy stagnant pools of Saxon blood, incapable of any thing but the song of a frog, in home-counties: — these phenomena give England a peculiar distinction in the wrong sense, among the nations.',
+    contact_okay: true,
     created_at: new Date('2017-09-26 14:26:16 UTC'),
     updated_at: new Date('2017-09-26 14:26:16 UTC'),
     deleted_at: null
   },
   { id: 4,
     review_question_id: 1,
-    user_id: 4,
-    title: 'Slither',
+    user_id: 1,
+    title: 'Smart stuff',
     answer: 'ditto. It\'s all been said.',
+    contact_okay: false,
     created_at: new Date('2017-09-25 14:26:16 UTC'),
     updated_at: new Date('2017-09-25 14:26:16 UTC'),
     deleted_at: null
