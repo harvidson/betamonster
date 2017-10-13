@@ -69,9 +69,9 @@
 
       })
       .state({
-        name: 'reviewForm',
+        name: 'newReview',
         url: '/new-review',
-        component: 'reviewForm',
+        component: 'newReview',
         parent: 'testFrame'
 
       })

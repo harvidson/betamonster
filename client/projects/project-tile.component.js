@@ -13,6 +13,7 @@ angular.module('app')
     const vm = this;
     vm.project;
     vm.ownsProject = false;
+    vm.isVisitor = true;
 
     vm.$onInit = function(){
       let userId;
@@ -33,6 +34,7 @@ angular.module('app')
       .then((data) => {
         if (data.userId === vm.project.user_id) {
           vm.ownsProject = true;
+          vm.isVisitor = !vm.ownsProject
         }
       })
       .catch((err) => {

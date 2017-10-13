@@ -1,0 +1,55 @@
+<div class="ph3-ns mw8-ns center">
+  <div class="bg-white ph4 pb4 pt1 br4">
+    <h2 class="mid-gray sans-serif f3 fw4">New review</h2>
+
+    <article class="pa1 black-80">
+      <form name="$ctrl.reviewForm" accept-charset="utf-8" novalidate ng-submit="$ctrl.submitReview($event)">
+        <fieldset id="new-project" class="ba b--transparent ph0 mh0">
+          <legend class="ph0 mh0 fw6 clip">New review</legend>
+
+          <div class="" ng-class="{
+            'has-error' : $ctrl.reviewForm.title.$invalid && $ctrl.reviewForm.title.$touched,
+            'has-success': $ctrl.reviewForm.title.$valid }">
+            <label class="db fw4 lh-copy f6" for="title">Title</label>
+            <input class="pa2 ba b--mid-gray br2 w-100 form-control" type="text" name="title" id="title" required ng-minlength=2 ng-maxlength=150 ng-model="$ctrl.data.title">
+          </div>
+
+          <div class="mt3" ng-class="{
+            'has-error' : $ctrl.reviewForm.answer.$invalid && $ctrl.reviewForm.answer.$touched,
+            'has-success': $ctrl.reviewForm.answer.$valid }">
+            <label class="db fw4 lh-copy f6" for="answer">Your response</label>
+            <textarea id="answer" name="answer" class="db border-box hover-black w-100 ba b--mid-gray pa2 br2 mb2 form-control" placeholder="So what did you think? Keep the developer's questions in mind as you test. Also, details help!" required ng-minlength=8 ng-model="$ctrl.data.answer"></textarea>
+          </div>
+
+          <div class="mt3" ng-class="{
+           'has-error' : $ctrl.reviewForm.contactOkay.$invalid && $ctrl.reviewForm.contactOkay.$touched,
+           'has-success': $ctrl.reviewForm.contactOkay.$valid }">
+            <label class="db fw4 lh-copy f6" for="contactOkay">If the developer has follow-up questions, is it okay for them to email you?</label>
+            <div class="form-group">
+              <div class="radio">
+                <label class="db fw4 lh-copy f6">
+                  <input type="radio" name="contactOkay" value="yes" ng-model="$ctrl.data.contactOkay" required>
+                    yes
+                </label>
+              </div>
+              <div class="radio">
+                <label class="db fw4 lh-copy f6">
+                 <input type="radio" name="contactOkay" value="no" ng-model="$ctrl.data.contactOkay" required>
+                   no
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </fieldset>
+        <div class="mt3 w5-ns center">
+          <input class="bw0 br3 bg-mid-gray pa2-l pa1 near-white f6 fw1 tc bg-animate mr2 link" type="submit" value="submit" ng-disabled="$ctrl.reviewForm.$invalid" ng-class="{
+            'disabled' : $ctrl.reviewForm.$invalid,
+            'enabled' : $ctrl.reviewForm.$valid }">
+          <input class="bw0 br3 bg-mid-gray pa2-l pa1 near-white f6 fw1 tc bg-animate hover-bg-green pointer link" type="reset" value="cancel" ng-click="$ctrl.cancel()">
+        </div>
+      </form>
+    </article>

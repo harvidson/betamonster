@@ -2,9 +2,12 @@
 'use strict';
 
 angular.module('app')
-  .component('reviewForm', {
+  .component('newReview', {
     controller,
-    templateUrl: '/reviews/review-form.template.html'
+    bindings: {
+      currentProjectId: '<'
+    },
+    templateUrl: '/reviews/new-review.template.html'
   })
 
   function controller() {
