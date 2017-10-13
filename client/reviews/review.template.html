@@ -1,8 +1,31 @@
 <div class="cf">
-  <div class="pa3 fl">
-    {{ $ctrl.review.answer }}
+
+  <div class="fl pl3 w-80-ns">
+    <h3 class="accent f5 fw2">{{ $ctrl.review.title }}</h3>
+    <div class="f6 ">
+      {{ $ctrl.review.answer }}
+    </div>
   </div>
-  <div class="pa3 fr tr">
-    <span class="br3 bg-mid-gray tr white ph1 fw1">contact</span>
+
+
+  <div class="w-20-ns fr">
+
+    <div class="br-100 db fr tc mb1">
+      <img ng-src="https://api.adorable.io/avatars/40/{{ $ctrl.review.reviewerEmail }}" alt="reviewer avatar" />
+    </div>
+
+    <div class="tc mb1">
+      <p class="tc">
+        {{ $ctrl.review.reviewerFirstName }} {{ $ctrl.review.reviewerLastName }}
+      </p>
+    </div>
+
+    <div class="ph1 fw1 white fr tc mb1">
+      <a ng-href="mailto:{{ $ctrl.review.reviewerEmail }}" target="_blank" class="link white bg-mid-gray br3 pa1 ">email</a>
+    </div>
+    
   </div>
 </div>
+
+
+<hr />

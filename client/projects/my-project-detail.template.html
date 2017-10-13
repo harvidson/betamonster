@@ -5,17 +5,18 @@
     <project-tile></project-tile>
 
 
-    <div class="fl w-100 w-two-thirds-ns pv2 pl2">
+    <div class="fl w-100 w-two-thirds-ns pl2">
       <div class="bg-white pa4 br4">
         <div>
           <h2 class="mid-gray sans-serif f3 fw4">User Feedback</h2>
-          <div>
+
+          <!-- TODO: if there are no reviews, give placeholder text encouragin developer to seek out more reviews -->
             <div ng-repeat="review in $ctrl.reviews">
 
               <review review='review'></review>
 
             </div>
-          </div>
+
 
           <div class="overflow-auto 6 w-100 mw8 center lh-copy">
             <div class="tl sans-serif f4 fw3 mid-gray">
