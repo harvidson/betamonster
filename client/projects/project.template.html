@@ -1,12 +1,28 @@
-<div class="pa3">
-  <div class="">
-    <a href="#" class="link mid-gray underline-hover">{{ $ctrl.project.title }}</a>
+<div class="pa3 cf">
+  <div class="fl w-80-ns">
+    <a href="#" class="link mid-gray underline-hover accent f4">{{ $ctrl.project.title }}</a>
+    <p class="pl2">
+      {{ $ctrl.project.description }}
+    </p>
   </div>
-  <!-- <div class="pa3 fr tr">
-    <span class="br-100 bg-mid-gray tr white ph1">dev name</span>
-  </div> -->
-  <div class="tr">
-    <a class="link" ui-sref="newReview({ id: $ctrl.project.id })"><button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc pa1 mr2 link hover-bg-green pointer" ng-click="$ctrl.review()" ng-show="$ctrl.authService.loggedIn">review</button></a>
+
+  <div class="w-20-ns fr pt3">
+
+    <div class="center tinyAvatar">
+      <img ng-src="https://api.adorable.io/avatars/40/{{ $ctrl.project.developerEmail }}" alt="dev avatar" class="tc center br-100 "/>
+    </div>
+
+    <div class="f6 center mb1">
+      <p class="tc">
+        {{ $ctrl.project.developerFirstName }} {{ $ctrl.project.developerLastName }}
+      </p>
+    </div>
+
+    <div class="ph1 fw1 white tc mb1 center">
+      <a class="link" ui-sref="newReview({ id: $ctrl.project.id })"><button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tr pa1 mr2 link hover-bg-green pointer" ng-click="$ctrl.review()" ng-show="$ctrl.authService.loggedIn">review</button></a>
+
+    </div>
+  </div>
+
 
   </div>
-</div>

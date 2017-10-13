@@ -11,30 +11,14 @@
   </ul>
 </div>
 
-<div class="fl w-100 w-100 pa2">
+<div class="fl w-100 w-100 pa2 pl3">
   <div class="bg-white pa4 br4">
     <div>
-      <h2 class="mid-gray sans-serif f3 fw4">Monsters</h2>
+      <h2 class="mid-gray sans-serif f3 fw4">Current monsters</h2>
+      <hr />
 
-      <div>
-        <div class="overflow-auto 6 w-100 mw8 center lh-copy">
-          <div class="cf">
-            <div class="tl f5 fw3 fl">
-              project name
-            </div>
-            <div class="tl f5 fw3 tr fr">
-
-            </div>
-            </div>
-            <hr />
-
-
-          <div ng-repeat="project in $ctrl.projects">
-<!-- TODO: reusing this component isn't working; prob need to duplicate -->
-            <project project='project'></project>
-
-          </div>
-
-
-        </div>
+      <div ng-repeat="project in $ctrl.projects">
+        <project project='project'></project>
       </div>
+
+    </div>

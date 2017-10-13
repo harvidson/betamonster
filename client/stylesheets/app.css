@@ -40,3 +40,7 @@ input.ng-valid.ng-dirty {
   color: #82BD38;
   font-weight: 300;
 }
+
+.tinyAvatar {
+  width: 40px;
+}
