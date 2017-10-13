@@ -10,14 +10,17 @@ angular.module('app')
   templateUrl: '/projects/project.template.html'
 })
 
-controller.$inject = ['$state', '$stateParams', 'reviewsService'];
+controller.$inject = ['$state', '$stateParams', 'authService'];
 
-function controller($state, $stateParams, reviewsService) {
+function controller($state, $stateParams, authService) {
   const vm = this;
   // const projectId = vm.project.id;
 
-  vm.$onInit = function(){
 
+  vm.$onInit = function(){
+    //local version of authService
+    vm.authService = authService
+    console.log(vm.authService);
   }
 
 //   vm.review = function() {

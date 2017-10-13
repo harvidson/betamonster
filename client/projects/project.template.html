@@ -6,7 +6,7 @@
     <span class="br-100 bg-mid-gray tr white ph1">dev name</span>
   </div> -->
   <div class="tr">
-    <a class="link" ui-sref="newReview({ id: $ctrl.project.id })"><button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc pa1 mr2 link hover-bg-green pointer" ng-click="$ctrl.review()">review</button></a>
+    <a class="link" ui-sref="newReview({ id: $ctrl.project.id })"><button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc pa1 mr2 link hover-bg-green pointer" ng-click="$ctrl.review()" ng-show="$ctrl.authService.loggedIn">review</button></a>
 
   </div>
 </div>

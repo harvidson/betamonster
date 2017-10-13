@@ -7,11 +7,14 @@ angular.module('app')
   service.$inject = ['$http', '$state']
 
   function service($http, $state) {
+    const vm = this;
+
+    this.loggedIn = false;
 
     this.login = function(loginCred) {
       return $http.post('/api/token/', loginCred)
       .then(function(response) {
-
+        vm.loggedIn = true;
         //if someone has sent you a link, it would be nice if, after login, you get to go to that link
         //to make the below work, would have to do a get from the db to get 'isDeveloper'
         if (response.data.isDeveloper === true) {
@@ -19,6 +22,7 @@ angular.module('app')
         } else {
           $state.go('testDashboard')
         }
+
         return response
       })
       .catch((err) => {
@@ -39,6 +43,7 @@ angular.module('app')
     this.logout = function() {
       return $http.delete('/api/token')
       .then(function(response) {
+        vm.loggedIn = false;
         return response
       })
       .catch((err) => {
@@ -50,6 +55,7 @@ angular.module('app')
     this.checkCookie = function() {
       return $http.get('/api/token')
       .then(function({data}) {
+        vm.loggedIn = data.authorized;
         return data
       })
       .catch((err) => {
