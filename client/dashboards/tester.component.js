@@ -4,6 +4,9 @@
 angular.module('app')
 .component('tester', {
   controller,
+  bindings: {
+     project: '<'
+   },
   templateUrl: '/dashboards/tester.template.html'
 })
 

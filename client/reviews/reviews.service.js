@@ -18,6 +18,10 @@
       })
     }
 
+    this.prepareForm = function(projectId){
+      
+    }
+
 //revise this so that we're submitting an ANSWER not a 'review'
     // this.submitReview = function(answer) {
     //   return $http.post(`reviews/${reviewId}/answers`, answer)

@@ -70,7 +70,7 @@
       })
       .state({
         name: 'newReview',
-        url: '/new-review',
+        url: '/projects/:id/review',
         component: 'newReview',
         parent: 'testFrame'
 

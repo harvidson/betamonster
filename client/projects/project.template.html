@@ -1,9 +1,12 @@
-<div class="cf">
-  <div class="pa3 fl">
-    <!-- TODO: create a new mid-nav option for ng-click -->
-    <a ui-sref='myProjectDetail({ id: $ctrl.project.id })' class="link mid-gray underline-hover">{{ $ctrl.project.title }}</a>
+<div class="pa3">
+  <div class="">
+    <a href="#" class="link mid-gray underline-hover">{{ $ctrl.project.title }}</a>
   </div>
-  <div class="pa3 fr tr" ng-show="$ctrl.myProjects">
-    <span class="br-100 bg-mid-gray tr white ph1">{{ $ctrl.project.count }}</span>
+  <!-- <div class="pa3 fr tr">
+    <span class="br-100 bg-mid-gray tr white ph1">dev name</span>
+  </div> -->
+  <div class="tr">
+    <a class="link" ui-sref="newReview({ id: $ctrl.project.id })"><button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc pa1 mr2 link hover-bg-green pointer" ng-click="$ctrl.review()">review</button></a>
+
   </div>
 </div>
