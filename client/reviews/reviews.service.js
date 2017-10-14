@@ -18,8 +18,16 @@
       })
     }
 
-    this.prepareForm = function(projectId){
-      
+    this.submitReview = function(data){
+      const projectId = data.projectId;
+
+      return $http.post(`/api/projects/${projectId}/reviews`, data)
+      .then(({data}) => {
+        return data
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     }
 
 //revise this so that we're submitting an ANSWER not a 'review'

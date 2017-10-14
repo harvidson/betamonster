@@ -18,9 +18,8 @@ function controller($state, $stateParams, authService) {
 
 
   vm.$onInit = function(){
-    //local version of authService
+    // version of authService that's local to this file
     vm.authService = authService
-    console.log(vm.authService);
   }
 
 //   vm.review = function() {

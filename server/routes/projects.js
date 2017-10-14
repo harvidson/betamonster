@@ -8,6 +8,7 @@ const {
   camelizeKeys,
   decamelizeKeys
 } = require('humps');
+const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 
 const router = express.Router();
 
@@ -254,6 +255,7 @@ router.get('/:id/reviews', authorize, (req, res, next) => {
 //post a new review to db; run Watson tone analysis on review's way in (note: "review" here refers to row in "answers" table)
 router.post('/:id/reviews', authorize, (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
+  console.log(req.body.answer);
   const answer = req.body.answer
   let watsonObj;
 
@@ -297,8 +299,8 @@ router.post('/:id/reviews', authorize, (req, res, next) => {
   function analyzeTone(text) {
     return new Promise((resolve, reject) => {
       const tone_analyzer = new ToneAnalyzerV3({
-        username: 'process.env.WatsonUsername',
-        password: 'process.env.WatsonPassword',
+        username: process.env.WatsonUsername,
+        password: process.env.WatsonPassword,
         version_date: '2017-10-13'
       });
 

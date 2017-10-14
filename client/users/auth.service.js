@@ -63,6 +63,7 @@ angular.module('app')
       })
     }
 
+    //brings up user profile data
     this.getUser = function(id){
       return $http.get(`/api/users/${id}`)
       .then(({data}) => {
