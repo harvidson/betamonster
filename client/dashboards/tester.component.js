@@ -17,6 +17,9 @@ function controller(authService, projectsService) {
   vm.projects = [];
   vm.project = {};
   vm.currentProjectId;
+  vm.query = '';
+  vm.sortBy = ['project', 'developer'];
+  vm.sortSelected = vm.sortBy[0];
 
   vm.$onInit = function(){
     let userId;
@@ -32,9 +35,9 @@ function controller(authService, projectsService) {
     .catch((err) => {
       console.log(err);
     })
-
-
   }
+
+  projectsService.reSortPosts(vm.sortSelected)
 }
 
 

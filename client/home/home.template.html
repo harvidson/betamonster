@@ -6,7 +6,7 @@
       <input ng-model="$ctrl.query" type="search" class="br2" placeholder=" filter">
     </li>
     <li class="dib">
-      <select ng-model="$ctrl.sortSelected" ng-options="option as 'Sort by ' + option for option in $ctrl.sortBy" class="" id="sort">
+      <select ng-model="$ctrl.sortSelected" ng-options="option as 'sort by ' + option for option in $ctrl.sortBy" class="" id="sort">
     </select>
     </li>
   </ul>
@@ -18,7 +18,7 @@
       <h2 class="mid-gray sans-serif f3 fw4">Current monsters</h2>
       <hr />
 
-      <div ng-repeat="project in $ctrl.projects">
+      <div ng-repeat="project in $ctrl.projects | filter:$ctrl.query | orderBy:$ctrl.reSortPosts()">
         <project project='project'></project>
       </div>
 

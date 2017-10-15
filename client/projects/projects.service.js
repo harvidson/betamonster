@@ -68,6 +68,13 @@
       })
     }
 
+    this.reSortPosts = function(sortSelected) {
+      let selector = sortSelected.toLowerCase();
+      if (selector === 'developer') {
+        selector = 'developerLastName'
+      };
+      return selector;
+    }
 
 
   }

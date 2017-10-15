@@ -6,12 +6,21 @@
 
 
     <div class="fl w-100 w-two-thirds-ns pa2">
-      <div class="bg-white pa4 br4">
 
+      <div class="bg-white ph4 pb4 pt2 br4">
         <h2 class="mid-gray sans-serif f3 fw4">Projects</h2>
+        <ul class="list ph2">
+          <li role="presentation" class="dib">
+            <input ng-model="$ctrl.query" type="search" class="br2 bg-near-white" placeholder=" filter">
+          </li>
+          <li class="dib">
+            <select ng-model="$ctrl.sortSelected" ng-options="option as 'sort by ' + option for option in $ctrl.sortBy" class="" id="sort">
+          </select>
+          </li>
+        </ul>
 
         <div class="overflow-auto 6 w-100 mw8 center lh-copy">
-          <div ng-repeat="project in $ctrl.projects">
+          <div ng-repeat="project in $ctrl.projects | filter:$ctrl.query | orderBy:$ctrl.reSortPosts()">
 
             <project project='project'></project>
 
