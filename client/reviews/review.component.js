@@ -4,9 +4,9 @@
   angular.module('app')
     .component('review', {
       controller,
-      // bindings: {
-      //   review: '<'
-      // },
+      bindings: {
+        review: '<'
+      },
       templateUrl: '/reviews/review.template.html'
     })
 
