@@ -82,20 +82,55 @@ router.post('/', authorize, (req, res, next) => {
     });
 })
 
-//get all current, published projects
+//get all current, published projects, along with developer name and email
 router.get('/', (req, res, next) => {
+  const promises = [];
+  let projects;
+
+
   knex('projects')
     .where({
       published: true,
       deleted_at: null
     })
-    .then((projects) => {
+    .then((projectData) => {
+      projects = projectData;
+
+      //get user data on developer for each project
+      for (const project of projects) {
+        promises.push(promisifyProject(project))
+      }
+      return Promise.all(promises);
+    })
+    .then((projectData) => {
+      for (let i = 0; i < projectData.length; i++) {
+        projects[i].developerFirstName = projectData[i].first_name;
+        projects[i].developerLastName = projectData[i].last_name;
+        projects[i].developerEmail = projectData[i].email;
+      }
+    })
+    .then(() => {
+      console.log(projects);
       res.send(projects)
     })
     .catch((err) => {
       console.log(err);
       return next(boom.create(500, 'Internal server error from /projects GET.'))
     });
+
+  function promisifyProject(project) {
+    return new Promise((resolve, reject) => {
+      knex('users')
+        .where('id', project.user_id)
+        .select('first_name', 'last_name', 'email')
+        .then((data) => {
+          resolve(data[0]);
+        })
+        .catch((err) => {
+          reject(err);
+        })
+    })
+  }
 })
 
 //get a specific project by id
