@@ -62,9 +62,19 @@ angular.module('app')
       })
     }
 
-    //brings up user profile data
+    //brings up user profile data by id
     this.getUser = function(id){
       return $http.get(`/api/users/${id}`)
+      .then(({data}) => {
+        return data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
+    this.getDeveloper = function(projectId) {
+      return $http.get(`/api/projects/${projectId}/users`)
       .then(({data}) => {
         return data;
       })

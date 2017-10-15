@@ -14,6 +14,7 @@ angular.module('app')
     vm.project;
     vm.ownsProject = false;
     vm.isVisitor = true;
+    vm.developer = {}
 
     vm.$onInit = function(){
       let userId;
@@ -35,6 +36,11 @@ angular.module('app')
           vm.ownsProject = true;
           vm.isVisitor = !vm.ownsProject
         }
+        return authService.getDeveloper(projectId)
+      })
+      .then((data) => {
+        vm.project.developerFirstName = data.developerFirstName;
+        vm.project.developerLastName = data.developerLastName;
       })
       .catch((err) => {
         console.log(err);

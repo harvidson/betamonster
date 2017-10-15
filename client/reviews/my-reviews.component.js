@@ -4,6 +4,9 @@
 angular.module('app')
 .component('myReviews', {
   controller,
+  bindings: {
+    review: '<'
+  },
   templateUrl: '/reviews/my-reviews.template.html'
 })
 

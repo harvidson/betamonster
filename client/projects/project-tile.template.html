@@ -1,40 +1,43 @@
+<div class="fl w-100 w-third-ns ph2">
+  <div class="bg-white pv4 br4">
 
-  <div class="fl w-100 w-third-ns ph2">
-    <div class="bg-white pv4 br4">
+    <a href="{{ $ctrl.project.link }}" class="link mid-gray">
       <img class="db center" src="{{ $ctrl.project.image }}" alt="project landing page" />
       <div class="ma10 pa2 sans-serif">
         <div class="f2-ns fw2 tc accent">
           {{ $ctrl.project.title }}
         </div>
         <div class="pt2 tc">
-          <a href="{{ $ctrl.project.link }}" class="link mid-gray">{{ $ctrl.project.link }}</a>
+          <!-- TODO: add external link icon -->
+          {{ $ctrl.project.link }}
+          <img src="../images/icons8-External-Link-48.png" width="15px"/>
         </div>
-        <!-- TODO: create route to get developer name -->
-        <div class="pt2 tc mid-gray" ng-show="$ctrl.isVisitor">
-          By Some Developer
-        </div>
-
-        <div class="">
-          <h3 class="f3-ns fw2 mid-gray">Description</h3>
-          <p class="f5 fw1">
-            {{ $ctrl.project.description }}
-          </p>
-        </div>
-        <div >
-          <h3 class="f3-ns fw2 mid-gray">Testing instructions</h3>
-          <p class="f5 fw1">
-            {{ $ctrl.project.question }}
-          </p>
-        </div>
-
-
-        <div class="tc" ng-show="$ctrl.ownsProject">
-          <button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc pa1 mr2 link hover-bg-green pointer" ng-click="$ctrl.edit()">edit</button>
-          <button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc pa1 mr2 link hover-bg-green pointer" ng-click="$ctrl.unpublish()">unpublish</button>
-          <button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc pa1 mr2 link hover-bg-green pointer" ng-click="$ctrl.delete()">delete</button>
-        </div>
-
-
+      <div class="pt2 tc mid-gray" ng-show="$ctrl.isVisitor">
+        By {{ $ctrl.project.developerFirstName }} {{ $ctrl.project.developerLastName }}
       </div>
+    </a>
+
+    <div class="">
+      <h3 class="f3-ns fw2 mid-gray">Description</h3>
+      <p class="f5 fw1">
+        {{ $ctrl.project.description }}
+      </p>
     </div>
+    <div>
+      <h3 class="f3-ns fw2 mid-gray">Testing instructions</h3>
+      <p class="f5 fw1">
+        {{ $ctrl.project.question }}
+      </p>
+    </div>
+
+
+    <div class="tc" ng-show="$ctrl.ownsProject">
+      <button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc ph1 mr2 link hover-bg-green pointer" ng-click="$ctrl.edit()">edit</button>
+      <button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc ph1 mr2 link hover-bg-green pointer" ng-click="$ctrl.unpublish()">unpublish</button>
+      <button class="center bw0 br3 bg-mid-gray mt2 near-white fw1 tc ph1 mr2 link hover-bg-green pointer" ng-click="$ctrl.delete()">delete</button>
+    </div>
+
+
   </div>
+</div>
+</div>

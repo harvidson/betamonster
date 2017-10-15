@@ -183,6 +183,35 @@ router.get('/:id/question', (req, res, next) => {
     });
 })
 
+//get the developer of a project
+router.get('/:id/users', (req, res, next) => {
+  const projectId = Number.parseInt(req.params.id);
+  let developer = {};
+
+  if (Number.isNaN(projectId) || projectId < 0) {
+    return next(boom.create(404, 'Not found.'));
+  }
+
+  return knex('projects')
+    .where('id', projectId)
+    .first()
+    .then((project) => {
+      return knex('users')
+        .where('id', project.user_id)
+        .first()
+    })
+    .then((user) => {
+      developer.developerFirstName = user.first_name;
+      developer.developerLastName = user.last_name;
+      developer.developerEmail = user.email;
+      res.send(developer)
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(boom.create(500, 'Internal server error from /projects/:id/users GET.'))
+    });
+})
+
 //delete a project
 router.delete('/:id', authorize, (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
