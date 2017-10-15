@@ -183,6 +183,7 @@ router.get('/:id/question', (req, res, next) => {
     });
 })
 
+//delete a project
 router.delete('/:id', authorize, (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
 
@@ -216,6 +217,7 @@ router.delete('/:id', authorize, (req, res, next) => {
     });
 })
 
+//get all non-deleted reviews for a project
 router.get('/:id/reviews', authorize, (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
   let answers;
@@ -245,7 +247,10 @@ router.get('/:id/reviews', authorize, (req, res, next) => {
     })
     .then((row) => {
       return knex('answers')
-        .where('review_question_id', row.id)
+        .where({
+          review_question_id: row.id,
+          deleted_at: null
+        })
     })
     .then((answerData) => {
       answers = answerData;
