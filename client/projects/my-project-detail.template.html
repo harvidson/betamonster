@@ -16,6 +16,11 @@
               Reviews
             </div>
           </div>
+          <div class="sans-serif f5 pl3" ng-show="$ctrl.reviewsService.noReviews">
+            <p>
+              No reviews are in yet.
+            </p>
+          </div>
             <div ng-repeat="review in $ctrl.reviews">
 
               <review review='review'></review>

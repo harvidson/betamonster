@@ -13,15 +13,16 @@ angular.module('app')
     const vm = this
     const projectId = $stateParams.id;
     vm.watsonData = [];
-    vm.noReviews = true;
     vm.watsonSummary;
 
 
     vm.$onInit = function() {
+      vm.reviewsService = reviewsService;
+
       reviewsService.getWatsonData(projectId)
         .then((data) => {
           vm.watsonData = data;
-          vm.noReviews = vm.watsonData.length === 0;
+
           vm.watsonSummary();
         })
     }

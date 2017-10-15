@@ -102,7 +102,7 @@ router.get('/:id/projects', authorize, (req, res, next) => {
   }
 
   // get all of the user's current projects, along with a count of reviews submitted for that project
-  knex.raw(`SELECT projects.id, projects.title, projects.link, projects.description, projects.readiness, projects.image, projects.published, projects.created_at, projects.updated_at, count(reviews.id) FROM projects LEFT JOIN reviews ON projects.id = reviews.project_id WHERE projects.user_id = ${userId} AND projects.deleted_at IS null GROUP BY projects.id`)
+  knex.raw(`SELECT projects.id, projects.title, projects.link, projects.description, projects.readiness, projects.image, projects.published, projects.created_at, projects.updated_at, count(answers.review_question_id) FROM projects LEFT JOIN reviews ON projects.id = reviews.project_id LEFT JOIN reviews_questions ON reviews.id = reviews_questions.review_id LEFT JOIN answers ON reviews_questions.id = answers.review_question_id WHERE projects.user_id = ${userId} AND projects.deleted_at IS null GROUP BY projects.id`)
   .then((myProjects) => {
     res.send(myProjects.rows)
   })

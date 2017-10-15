@@ -28,7 +28,6 @@
         })
     }
 
-// TODO: count here is counting 'reviews' (as in review batches, not number of answers associated with the question associated with the review)
     this.getMyProjects = function(userId) {
       return $http.get(`/api/users/${userId}/projects`)
         .then(({ data }) => {

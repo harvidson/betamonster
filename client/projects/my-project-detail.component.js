@@ -12,10 +12,11 @@ angular.module('app')
   function controller($state, $stateParams, $http, authService, projectsService, reviewsService) {
     const vm = this;
     vm.project;
-    vm.reviews = [{title: 'reviewA'}, {title: 'reviewB'}, {title: 'reviewC'}]
+    vm.reviews = []
 
     vm.$onInit = function(){
-      // let userId;
+      vm.reviewsService = reviewsService;
+      
       const projectId = $stateParams.id;
 
       reviewsService.getReviews(projectId)

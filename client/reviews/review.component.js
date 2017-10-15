@@ -16,7 +16,7 @@ function controller($state, $stateParams, reviewsService) {
   const vm = this;
 
   vm.$onInit = function(){
-    
+
   }
 }
 

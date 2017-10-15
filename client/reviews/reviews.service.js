@@ -4,10 +4,11 @@
   angular.module('app')
     .service('reviewsService', service)
 
-  service.$inject = ['$http', '$state', 'authService']
+  service.$inject = ['$http', '$state']
 
-  function service($http, $state, authService) {
+  function service($http, $state) {
     const vm = this;
+    vm.noReviews = true;
 
     this.getReviews = function(projectId) {
       return $http.get(`/api/projects/${projectId}/reviews`)
@@ -34,6 +35,7 @@
               tones: review.watson_analysis.document_tone.tones
             })
           })
+          vm.noReviews = data.length === 0;
           return watsonData;
         })
         .catch((err) => {
@@ -54,45 +56,6 @@
           console.log(err);
         })
     }
-
-
-
-
-    //revise this so that we're submitting an ANSWER not a 'review'
-    // this.submitReview = function(answer) {
-    //   return $http.post(`reviews/${reviewId}/answers`, answer)
-    //   .then(({data}) => {
-    //     return data
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    // }
-    //
-    // this.deleteProject = function(id) {
-    //   return $http.delete(`api/projects/${id}`)
-    //   .then(({data}) => {
-    //     console.log(data);
-    //     // return data
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    // }
-    //
-    // this.getQuestion = function(projectId) {
-    //   return $http.get(`/api/projects/${projectId}/question`)
-    //   .then(({data}) => {
-    //     console.log(data);
-    //     return data.question;
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    // }
-
-
-
   }
 
 
