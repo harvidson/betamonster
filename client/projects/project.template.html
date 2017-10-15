@@ -1,6 +1,7 @@
 <div class="pa3 cf">
   <div class="fl w-80-ns">
-    <a href="#" class="link mid-gray underline-hover accent f4">{{ $ctrl.project.title }}</a>
+    <a ui-sref="newReview( { id: $ctrl.project.id })" class="link mid-gray underline-hover accent f4" ng-if="$ctrl.authService.loggedIn">{{ $ctrl.project.title }}</a>
+    <span class="mid-gray accent f4" ng-if="!$ctrl.authService.loggedIn">{{ $ctrl.project.title }}</span>
     <p class="pl2">
       {{ $ctrl.project.description }}
     </p>

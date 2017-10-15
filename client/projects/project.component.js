@@ -10,15 +10,15 @@ angular.module('app')
   templateUrl: '/projects/project.template.html'
 })
 
-controller.$inject = [];
+controller.$inject = ['authService'];
 
-function controller() {
+function controller(authService) {
   const vm = this;
   // const projectId = vm.project.id;
 
 
   vm.$onInit = function(){
-
+    vm.authService = authService;
   }
 
 
