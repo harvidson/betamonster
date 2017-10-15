@@ -256,17 +256,18 @@ router.get('/:id/reviews', authorize, (req, res, next) => {
 router.post('/:id/reviews', authorize, (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
   console.log(req.body.answer);
-  const answer = req.body.answer
+  const watsonText = req.body.title + req.body.answer;
   let watsonObj;
 
   if (Number.isNaN(projectId) || projectId < 0) {
     return next(boom.create(404, 'Not found.'));
   }
 
-  analyzeTone(answer)
+  analyzeTone(watsonText)
   .then((data) => {
-    console.log('data from Wastson call ', data);
     watsonObj = data;
+    console.log('data from Wastson call ', JSON.parse(data));
+    console.log('raw Watson data ', data);
     return knex('reviews')
       .where('project_id', projectId)
       .first()
@@ -282,7 +283,7 @@ router.post('/:id/reviews', authorize, (req, res, next) => {
         user_id: req.claim.userId,
         review_question_id: row.id,
         title: req.body.title,
-        answer: answer,
+        answer: req.body.answer,
         contact_okay: req.body.contactOkay,
         watson_analysis: watsonObj
       }, '*')
@@ -306,7 +307,8 @@ router.post('/:id/reviews', authorize, (req, res, next) => {
 
       const params = {
         text: text,
-        tones: 'emotion, language, social'
+        tones: 'emotion, language, social',
+        sentences: false
       };
 
       tone_analyzer.tone(params, function(error, response) {
@@ -323,7 +325,6 @@ router.post('/:id/reviews', authorize, (req, res, next) => {
 
 })
 
-//receive new review from post; start a promise chain: analyzeTone(text)... .then((resolveStuff).....then(insert into db)......catch)
 
 //json.parse
 

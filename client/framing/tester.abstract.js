@@ -27,8 +27,6 @@ controller.$inject = ['authService']
 
 
     vm.$onInit = function() {
-      // vm.loggedIn = true;
-      // vm.loggedOut = !vm.loggedIn;
 
       vm.landing = true;
       vm.signup = false;

@@ -7,30 +7,61 @@
   service.$inject = ['$http', '$state', 'authService']
 
   function service($http, $state, authService) {
+    const vm = this;
+
+
 
     this.getReviews = function(projectId) {
       return $http.get(`/api/projects/${projectId}/reviews`)
-      .then(({data}) => {
-        return data;
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+        .then(({
+          data
+        }) => {
+          return data;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     }
 
-    this.submitReview = function(data){
+    this.getWatsonData = function(projectId) {
+      const watsonData = []
+
+      return $http.get(`/api/projects/${projectId}/reviews`)
+        .then(({
+          data
+        }) => {
+          data.forEach((review) => {
+            watsonData.push({
+              reviewId: review.id,
+              tones: review.watson_analysis.document_tone.tones
+            })
+          })
+          return watsonData;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+
+
+    this.submitReview = function(data) {
       const projectId = data.projectId;
 
       return $http.post(`/api/projects/${projectId}/reviews`, data)
-      .then(({data}) => {
-        return data
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+        .then(({
+          data
+        }) => {
+          return data
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     }
 
-//revise this so that we're submitting an ANSWER not a 'review'
+
+
+
+    //revise this so that we're submitting an ANSWER not a 'review'
     // this.submitReview = function(answer) {
     //   return $http.post(`reviews/${reviewId}/answers`, answer)
     //   .then(({data}) => {

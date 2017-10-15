@@ -6,12 +6,12 @@
         <div class="f2-ns fw2 tc accent">
           {{ $ctrl.project.title }}
         </div>
-        <div class="pt2">
-          Link: <a href="{{ $ctrl.project.link }}" class="link mid-gray">{{ $ctrl.project.link }}</a>
+        <div class="pt2 tc">
+          <a href="{{ $ctrl.project.link }}" class="link mid-gray">{{ $ctrl.project.link }}</a>
         </div>
         <!-- TODO: create route to get developer name -->
-        <div class="pt2" ng-show="$ctrl.isVisitor">
-          Developer: Some Body
+        <div class="pt2 tc mid-gray" ng-show="$ctrl.isVisitor">
+          By Some Developer
         </div>
 
         <div class="">

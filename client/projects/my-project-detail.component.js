@@ -15,7 +15,7 @@ angular.module('app')
     vm.reviews = [{title: 'reviewA'}, {title: 'reviewB'}, {title: 'reviewC'}]
 
     vm.$onInit = function(){
-      let userId;
+      // let userId;
       const projectId = $stateParams.id;
 
       reviewsService.getReviews(projectId)
@@ -27,6 +27,9 @@ angular.module('app')
         console.log(err);
       })
     }
+
+
+
 
 
 
