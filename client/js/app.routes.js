@@ -75,6 +75,12 @@
         component: 'newReview',
         parent: 'testFrame'
       })
+      .state({
+        name: 'myReviews',
+        url: 'tester/reviews',
+        component: 'myReviews',
+        parent: 'testFrame'
+      })
   }
 
 }());

@@ -22,6 +22,17 @@
         })
     }
 
+    this.getMyReviews = function(userId) {
+      return $http.get(`api/users/${userId}/reviews`)
+      .then(({data}) => {
+        console.log(data);
+        return data
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
     this.getWatsonData = function(projectId) {
       const watsonData = []
 

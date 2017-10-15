@@ -18,10 +18,11 @@
     </div>
   </div>
 
-  <nav class="mw9 ph3-ns" ng-show="$ctrl.loggedIn">
+  <nav class="mw9 ph3-ns">
     <div class="fl cf w-100 pa2">
-      <a class="link mid-gray sans-serif f4 fw3 dib underline-hover accent pr3" href="/">projects</a>
-      <a class="link mid-gray sans-serif f4 fw2 underline-hover" href="/">my reviews</a>
+      <a class="link mid-gray sans-serif f4 fw2 dib underline-hover pr3" href="/" ng-class="{active: $ctrl.activeButton === 'list'}">projects</a>
+      <a class="link mid-gray sans-serif f4 fw2 dib underline-hover pr3" href="#" ng-class="{active: $ctrl.activeButton === 'reviews'}" ng-click="$ctrl.toMyReviews()">my reviews</a>
+      <a ng-class="{active: $ctrl.activeButton === 'new'}" ng-show="$ctrl.newReview" class="link mid-gray sans-serif f4 fw2 dib underline-hover pr3" href="#">new review</a>
     </div>
   </nav>
 </header>

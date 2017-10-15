@@ -16,7 +16,8 @@ function controller(authService, projectsService) {
   const vm = this;
   vm.projects = [];
   vm.project = {};
-  vm.currentProjectId;
+  // vm.currentProjectId;
+
   vm.query = '';
   vm.sortBy = ['project', 'developer'];
   vm.sortSelected = vm.sortBy[0];

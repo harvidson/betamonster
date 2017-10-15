@@ -7,39 +7,29 @@ angular.module('app')
     templateUrl: '/framing/tester.template.html'
   })
 
-controller.$inject = ['authService']
+controller.$inject = ['$state','authService']
 
 //lots of junk in here...stopping so that i can have 3 abstracts instead
-  function controller(authService) {
+  function controller($state, authService) {
     const vm = this;
+    vm.activeButton = 'list'
+
     //nav bar switches:
-    authService.checkCookie()
-    .then((response) => {
-      vm.loggedIn = response;
-      vm.loggedOut = !vm.loggedIn;
-
-    })
-
-    vm.landing;
-    vm.signup;
-    vm.login;
-
+    vm.authService = authService;
 
     vm.$onInit = function() {
 
-      vm.landing = true;
-      vm.signup = false;
-      vm.login = false;
-
-      vm.isDev = true;
-      vm.isTest = !vm.isDev;
     }
 
     vm.logout = function(){
       authService.logout()
     }
 
-
+    vm.toMyReviews = function() {
+      vm.newReview = false;
+      vm.activeButton = 'reviews'
+      $state.go('myReviews')
+    }
 
 
   }

@@ -103,18 +103,83 @@ router.get('/:id/projects', authorize, (req, res, next) => {
 
   // get all of the user's current projects, along with a count of reviews submitted for that project
   knex.raw(`SELECT projects.id, projects.title, projects.link, projects.description, projects.readiness, projects.image, projects.published, projects.created_at, projects.updated_at, count(answers.review_question_id) FROM projects LEFT JOIN reviews ON projects.id = reviews.project_id LEFT JOIN reviews_questions ON reviews.id = reviews_questions.review_id LEFT JOIN answers ON reviews_questions.id = answers.review_question_id WHERE projects.user_id = ${userId} AND projects.deleted_at IS null GROUP BY projects.id`)
-  .then((myProjects) => {
-    res.send(myProjects.rows)
-  })
-  .catch((err) => {
-    console.log(err);
-    return next(boom.create(500, 'Internal server error.'))
-  });
+    .then((myProjects) => {
+      res.send(myProjects.rows)
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(boom.create(500, 'Internal server error.'))
+    });
+})
 
+//get all reviews submitted by a user (note: "reviews" here means "answers")
+router.get('/:id/reviews', authorize, (req, res, next) => {
+  const userId = Number.parseInt(req.params.id);
+  let numberReviews = 0;
+  const promises = [];
+  let reviews;
+
+  if (Number.isNaN(userId) || userId < 0) {
+    console.log('weird userId');
+    return next(boom.create(404, 'Not found.'));
+  }
+
+  // check is self--req.claim.userId needs to equal :id
+  if (userId !== req.claim.userId) {
+    return next(boom.create(500, 'Internal server error.'))
+  }
+
+  knex('answers')
+    .where({
+      'user_id': userId,
+      deleted_at: null
+    })
+    .then((reviewData) => {
+      reviews = reviewData
+
+      //get user project_id for each review
+      for (const review of reviews) {
+        promises.push(promisifyReview(review))
+      }
+      return Promise.all(promises);
+    })
+    .then((reviewData) => {
+      for (let i = 0; i < reviewData.length; i++) {
+        reviews[i].project_id = reviewData[i].project_id;
+      }
+    })
+    .then(() => {
+      console.log(reviews);
+      res.send(reviews)
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(boom.create(500, 'Internal server error from /users/:id/reviews GET.'))
+    })
+
+    function promisifyReview(review) {
+      return new Promise((resolve, reject) => {
+          knex('reviews_questions')
+            .where('id', review.review_question_id)
+            .first()
+            .then((row) => {
+              return knex('reviews')
+                .where('id', row.review_id)
+                .select('project_id')
+            })
+            .then((data) => {
+              resolve(data[0]);
+            })
+            .catch((err) => {
+              reject(err);
+            })
+      })
+    }
 })
 
 
 
 
 
- module.exports = router
+
+module.exports = router

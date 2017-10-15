@@ -110,7 +110,6 @@ router.get('/', (req, res, next) => {
       }
     })
     .then(() => {
-      console.log(projects);
       res.send(projects)
     })
     .catch((err) => {
@@ -299,29 +298,29 @@ router.post('/:id/reviews', authorize, (req, res, next) => {
   }
 
   analyzeTone(watsonText)
-  .then((data) => {
-    watsonObj = data;
-    console.log('data from Wastson call ', JSON.parse(data));
-    console.log('raw Watson data ', data);
-    return knex('reviews')
-      .where('project_id', projectId)
-      .first()
+    .then((data) => {
+      watsonObj = data;
+      console.log('data from Wastson call ', JSON.parse(data));
+      console.log('raw Watson data ', data);
+      return knex('reviews')
+        .where('project_id', projectId)
+        .first()
     })
     .then((review) => {
       return knex('reviews_questions')
-      .where('review_id', review.id)
-      .first()
+        .where('review_id', review.id)
+        .first()
     })
     .then((row) => {
       return knex('answers')
-      .insert({
-        user_id: req.claim.userId,
-        review_question_id: row.id,
-        title: req.body.title,
-        answer: req.body.answer,
-        contact_okay: req.body.contactOkay,
-        watson_analysis: watsonObj
-      }, '*')
+        .insert({
+          user_id: req.claim.userId,
+          review_question_id: row.id,
+          title: req.body.title,
+          answer: req.body.answer,
+          contact_okay: req.body.contactOkay,
+          watson_analysis: watsonObj
+        }, '*')
     })
     .then((newReview) => {
       console.log(newReview);
