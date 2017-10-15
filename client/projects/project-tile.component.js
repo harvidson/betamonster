@@ -21,7 +21,6 @@ angular.module('app')
 
       projectsService.getProjectById(projectId)
       .then((project) => {
-        console.log('getting project via project-tile: ', project);
         vm.project = project;
         return projectsService.getQuestion(projectId)
       })

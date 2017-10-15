@@ -27,7 +27,6 @@ function controller(authService, projectsService) {
       return projectsService.getProjects()
     })
     .then((projects) => {
-      console.log(projects);
       vm.projects = projects
     })
     .catch((err) => {

@@ -23,7 +23,6 @@ angular.module('app')
         return projectsService.getMyProjects(userId)
       })
       .then((myProjects) => {
-        console.log(myProjects);
         vm.projects = myProjects
       })
       .catch((err) => {

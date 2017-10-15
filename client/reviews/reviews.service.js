@@ -9,8 +9,6 @@
   function service($http, $state, authService) {
     const vm = this;
 
-
-
     this.getReviews = function(projectId) {
       return $http.get(`/api/projects/${projectId}/reviews`)
         .then(({
@@ -42,7 +40,6 @@
           console.log(err);
         })
     }
-
 
     this.submitReview = function(data) {
       const projectId = data.projectId;

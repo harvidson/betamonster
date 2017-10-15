@@ -59,6 +59,9 @@ angular.module('app')
       const height = 360;
       const radius = Math.min(width, height) / 2;
       const color = d3.scaleOrdinal(d3.schemeCategory20c);
+      const donutWidth = 75;
+      const legendRectSize = 18;
+      const legendSpacing = 4;
 
       const svg = d3.select('#chart')
       .append('svg')
@@ -68,7 +71,7 @@ angular.module('app')
       .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')');
 
       const arc = d3.arc()
-      .innerRadius(0)
+      .innerRadius(radius - donutWidth)
       .outerRadius(radius);
 
       const pie = d3.pie()
@@ -80,9 +83,61 @@ angular.module('app')
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', function(d, i) {
-        return color(d.data.label);
+      .attr('fill', function(d) {
+        return color(d.data.tone);
       });
+
+      path.on('mouseover', function(d) {
+        let total = d3.sum(vm.watsonSummary.map(function(d) {
+          return d.score;
+        }));
+        const percent = Math.round(1000 * d.data.score / total) / 10;
+        tooltip.select('.label').html(d.data.tone);
+        // tooltip.select('.count').html(d.data.score);
+        tooltip.select('.percent').html(percent + '%');
+        tooltip.style('display', 'block');
+      });
+
+      path.on('mouseout', function() {
+        tooltip.style('display', 'none');
+      });
+
+      const legend = svg.selectAll('.legend')
+        .data(color.domain())
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+          var height = legendRectSize + legendSpacing;
+          var offset =  height * color.domain().length / 2;
+          var horz = -2 * legendRectSize;
+          var vert = i * height - offset;
+          return 'translate(' + horz + ',' + vert + ')';
+        });
+
+      legend.append('rect')
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .style('fill', color)
+        .style('stroke', color);
+
+      legend.append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize - legendSpacing)
+        .text(function(d) {
+          return d;
+        });
+
+      const tooltip = d3.select('#chart')
+       .append('div')
+       .attr('class', 'tooltip');
+
+     tooltip.append('div')
+       .attr('class', 'label');
+     tooltip.append('div')
+       .attr('class', 'count');
+     tooltip.append('div')
+       .attr('class', 'percent');
 
     }
   }

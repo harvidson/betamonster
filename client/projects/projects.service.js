@@ -62,7 +62,6 @@
     this.getQuestion = function(projectId) {
       return $http.get(`/api/projects/${projectId}/question`)
       .then(({data}) => {
-        console.log(data);
         return data.question;
       })
       .catch((err) => {

@@ -20,7 +20,6 @@ angular.module('app')
 
       reviewsService.getReviews(projectId)
       .then((reviews) => {
-        console.log('reviews from my-project-detail ', reviews);
         vm.reviews = reviews
       })
       .catch((err) => {
