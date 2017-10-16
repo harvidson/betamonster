@@ -48,14 +48,20 @@ angular.module('app')
 
     }
 
-    // TODO: add edit
     vm.edit = function() {
-
+      projectsService.isEdit = true;
+      $state.go('editProject', { id: vm.project.id })
     }
 
     // TODO: add unpublish; filter results on devDashboard and landing so that unpublished either don't show or show under their own heading
     vm.unpublish = function() {
-
+      projectsService.unpublishProject(vm.project.id)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     }
 
     vm.delete = function() {

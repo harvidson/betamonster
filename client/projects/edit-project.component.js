@@ -2,12 +2,12 @@
 'use strict';
 
 angular.module('app')
-  .component('projectForm', {
+  .component('editProject', {
     controller,
     bindings: {
       project: '<'
     },
-    templateUrl: '/projects/project-form.template.html'
+    templateUrl: '/projects/edit-project.template.html'
   })
 
   controller.$inject = ['$state', '$stateParams', 'projectsService']
@@ -17,7 +17,16 @@ angular.module('app')
 
 
     vm.$onInit = function(){
-    vm.projectsService = projectsService
+
+        projectsService.getProjectById($stateParams.id)
+        .then((response) => {
+          console.log(response);
+          vm.project = response
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
 
     }
 
@@ -28,8 +37,7 @@ angular.module('app')
       projectsService.submitProject(vm.data)
       .then((project) => {
         $state.go('devDashboard')
-        vm.projectsService.isEdit = false;
-        console.log('heres the new project submitted ', project);
+        console.log('heres the updated project submitted ', project);
       })
       .catch((err) => {
         console.log(err);
@@ -40,8 +48,6 @@ angular.module('app')
     vm.cancel = function() {
       delete vm.data
       vm.projectForm.$setPristine();
-      vm.projectsService.isEdit = false;
-      $state.go('devDashboard')
     }
 
 

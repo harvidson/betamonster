@@ -64,6 +64,12 @@
         parent: 'devFrame'
       })
       .state({
+        name: 'editProject',
+        url: 'developer/projects/:id/edit',
+        component: 'editProject',
+        parent: 'devFrame'
+      })
+      .state({
         name: 'myProjectDetail',
         url: 'developer/projects/:id',
         component: 'myProjectDetail',
