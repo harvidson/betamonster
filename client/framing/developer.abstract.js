@@ -7,9 +7,9 @@ angular.module('app')
     templateUrl: '/framing/developer.template.html'
   })
 
-controller.$inject = ['$state','authService']
+controller.$inject = ['$state','authService', 'projectsService']
 
-  function controller($state, authService) {
+  function controller($state, authService, projectsService) {
     const vm = this;
     vm.projectDetail = false;
     vm.activeButton = 'list'
@@ -32,6 +32,7 @@ controller.$inject = ['$state','authService']
     vm.toForm = function() {
       vm.projectDetail = false;
       vm.activeButton = 'new'
+      projectsService.isEdit = false
       $state.go('projectForm')
     }
 

@@ -22,8 +22,8 @@ angular.module('app')
         console.log('this is an edit');
         projectsService.getProjectById($stateParams.id)
         .then((response) => {
-          vm.project = response
-          console.log(vm.project);
+          vm.data = response
+          console.log(vm.data);
         })
         .catch((err) => {
           console.log(err);
