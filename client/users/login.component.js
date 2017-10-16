@@ -28,6 +28,7 @@ function controller($state, authService) {
   vm.cancel = function() {
     delete vm.data
     vm.loginForm.$setPristine();
+    $state.go('home')
   }
 
 

@@ -36,12 +36,10 @@ function controller($state, authService) {
   vm.cancel = function() {
     delete vm.data
     vm.signupForm.$setPristine();
-    vm.navigateToPage('/')
+    $state.go('home')
   }
 
-  vm.navigateToPage = function(pageName) {
-    $state.go(pageName)
-  }
+
 
   // vm.matchPassword = function() {
   //   if (vm.data.password !== vm.data.confirm.password) {
