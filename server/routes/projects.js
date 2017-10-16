@@ -133,9 +133,10 @@ router.get('/', (req, res, next) => {
   }
 })
 
-//get a specific project by id
+//get project by id
 router.get('/:id', (req, res, next) => {
   const projectId = Number.parseInt(req.params.id);
+  let projectToReturn;
 
   if (Number.isNaN(projectId) || projectId < 0) {
     return next(boom.create(404, 'Not found.'));
@@ -145,7 +146,26 @@ router.get('/:id', (req, res, next) => {
     .where('id', projectId)
     .first()
     .then((project) => {
-      res.send(project)
+      projectToReturn = project
+
+      return knex('reviews')
+        .where('project_id', projectId)
+        .first()
+      })
+      .then((review) => {
+      console.log('review ', review);
+      return knex('reviews_questions')
+        .where('review_id', review.id)
+      })
+      .then((row) => {
+      console.log(row[0]);
+      return knex('questions')
+        .where('id', row[0].question_id)
+        .first()
+      })
+      .then((row) => {
+        projectToReturn.questions = row.question
+        res.send(projectToReturn)
     })
     .catch((err) => {
       console.log(err);
@@ -153,6 +173,24 @@ router.get('/:id', (req, res, next) => {
     });
 })
 
+
+//delete: stuff to draw from
+
+
+
+///end////
+
+
+
+
+
+
+
+
+
+
+
+//edit a project by id
 router.patch('/:id', authorize, (req, res, next) => {
   console.log(req.body);
   let updatedProject;
