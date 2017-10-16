@@ -52,7 +52,7 @@ const answersList = [
     user_id: 1,
     title: 'Jolly good stuff for a puppet',
     answer: 'But that\'s no kind of problem for me. Puppets made today are often much more real than live people. And to be sure, the site\'s pretty good, showing none of that aversion to directness that is a hall-mark of to-day. Now that I\'m writing I realized how excited I actually am about this project. If I could come out of this screen at you, you would find me in a manner of a man such as you did not expect I think, you would burst your eyes in your effort to absorb the sheer delight I feel at your app.',
-    watson_analysis: '{"document_tone": {"tones": [{"score": 0.989922,"tone_id": "confident","tone_name":"Confident"}]}}',
+    watson_analysis: '{"document_tone": {"tones": [{"score": 0.798274,"tone_id": "joy","tone_name":"Joy"}, {"score": 0.799191,"tone_id": "analytical","tone_name":"Analytical"}, {"score": 0.620072,"tone_id": "tentative","tone_name":"Tentative"}]}}',
     contact_okay: true,
     created_at: new Date('2017-10-15 14:26:16 UTC'),
     updated_at: new Date('2017-10-15 14:26:16 UTC'),

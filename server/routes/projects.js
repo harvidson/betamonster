@@ -173,23 +173,6 @@ router.get('/:id', (req, res, next) => {
     });
 })
 
-
-//delete: stuff to draw from
-
-
-
-///end////
-
-
-
-
-
-
-
-
-
-
-
 //edit a project by id
 router.patch('/:id', authorize, (req, res, next) => {
   console.log(req.body);
