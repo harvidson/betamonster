@@ -92,7 +92,15 @@
     }
 
     this.editProject = function(id, projectData) {
-      ///
+      return $http.patch(`/api/projects/${id}`, projectData)
+        .then(({
+          data
+        }) => {
+          return data;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     }
 
 

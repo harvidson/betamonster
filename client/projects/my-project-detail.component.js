@@ -16,17 +16,20 @@ angular.module('app')
 
     vm.$onInit = function(){
       vm.reviewsService = reviewsService;
-      
+
       const projectId = $stateParams.id;
 
       reviewsService.getReviews(projectId)
       .then((reviews) => {
+        console.log(reviews);
         vm.reviews = reviews
       })
       .catch((err) => {
         console.log(err);
       })
     }
+
+
 
 
 

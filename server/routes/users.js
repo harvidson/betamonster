@@ -89,7 +89,6 @@ router.get('/:id', authorize, (req, res, next) => {
 //get all current projects submitted by a user, along with a count of reviews in for each one
 router.get('/:id/projects', authorize, (req, res, next) => {
   const userId = Number.parseInt(req.params.id);
-  let numberReviews = 0;
 
   if (Number.isNaN(userId) || userId < 0) {
     console.log('weird userId');
@@ -112,10 +111,9 @@ router.get('/:id/projects', authorize, (req, res, next) => {
     });
 })
 
-//get all reviews submitted by a user (note: "reviews" here means "answers")
+//get all reviews submitted by a user (note: "reviews" here means "answers", unless it's a reference to the table called reviews)
 router.get('/:id/reviews', authorize, (req, res, next) => {
   const userId = Number.parseInt(req.params.id);
-  let numberReviews = 0;
   const promises = [];
   let reviews;
 
@@ -145,7 +143,10 @@ router.get('/:id/reviews', authorize, (req, res, next) => {
     })
     .then((reviewData) => {
       for (let i = 0; i < reviewData.length; i++) {
-        reviews[i].project_id = reviewData[i].project_id;
+        reviews[i].project_id = reviewData[i].id;
+        reviews[i].project_title = reviewData[i].title;
+        reviews[i].project_image = reviewData[i].image;
+        reviews[i].project_link = reviewData[i].link;
       }
     })
     .then(() => {
@@ -168,7 +169,14 @@ router.get('/:id/reviews', authorize, (req, res, next) => {
                 .select('project_id')
             })
             .then((data) => {
-              resolve(data[0]);
+              console.log('review data from promisifyReview ', data[0]);
+              return knex('projects')
+              .where('id', data[0].project_id)
+              .first()
+            })
+            .then((data) => {
+              console.log('full data from promisifyReview ', data);
+              resolve(data);
             })
             .catch((err) => {
               reject(err);

@@ -1,6 +1,6 @@
 <div class="cf">
 
-  <div class="fl pl3" ng-class="{ 'w-80-ns': $ctrl.ownsProject, 'w-100-ns': $ctrl.ownsReview }">
+  <div class="fl pl3 w-80-ns">
     <h3 class="accent f5 fw2">{{ $ctrl.review.title }}</h3>
     <!-- TODO: add moment.js time of post -->
     <div class="f6 ">
@@ -10,7 +10,7 @@
 
   <!--  -->
   <div class="w-20-ns fr pt3" ng-show="$ctrl.ownsProject">
-    <div class="center tinyAvatar">
+    <div class="center tinyImage">
       <img ng-src="https://api.adorable.io/avatars/40/{{ $ctrl.review.reviewerEmail }}" alt="reviewer avatar" class="tc center br-100 " />
     </div>
 
@@ -20,11 +20,26 @@
       </p>
     </div>
 
-    <!-- ng-if="$ctrl.contact" -->
-    <div class="ph1 fw1 white tc mb1 center">
-      <a ng-href="mailto:{{ $ctrl.review.reviewerEmail }}" target="_blank" class="link bg-mid-gray near-white bg-animate hover-bg-green pointerf7 br3 ph1 ">email</a>
+    <div class="ph1 fw1 white tc mb1 center" ng-if="$ctrl.contact_okay">
+      <a ng-href="mailto:{{ $ctrl.review.reviewerEmail }}" target="_blank" class="link bg-mid-gray near-white bg-animate hover-bg-green pointer f6 br3 ph1 ">email</a>
     </div>
   </div>
+
+  <div class="w-20-ns fr pt5" ng-show="$ctrl.ownsReview">
+    <a class="link pointer mid-gray " ng-href="$ctrl.review.project_link">
+      <div class="center tc w-100-ns">
+        <img ng-src=" {{ $ctrl.review.project_image }}" alt="project image" width="100" class="tc center" />
+      </div>
+
+      <div class="f6 center mb1">
+        <p class="tc">
+          {{ $ctrl.review.project_title }}
+        </p>
+      </div>
+    </a>
+
+  </div>
+
 </div>
 
 <div ng-show="$ctrl.ownsReview" class="mv2 w-80-ns center tc">
@@ -33,7 +48,7 @@
     <a class="link bg-mid-gray near-white bg-animate hover-bg-green pointer br3 ph1" ng-click="$ctrl.edit()">edit</a>
   </span>
   <span class="ph1 fw1 white tc center">
-      <a class="link bg-mid-gray near-white bg-animate hover-bg-green pointer br3 ph1" ng-click="$ctrl.delete()">delete</a>
+    <a class="link bg-mid-gray near-white bg-animate hover-bg-green pointer br3 ph1" ng-click="$ctrl.delete()">delete</a>
   </span>
 
 </div>

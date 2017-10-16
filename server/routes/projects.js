@@ -82,6 +82,7 @@ router.post('/', authorize, (req, res, next) => {
     });
 })
 
+
 //get all current, published projects, along with developer name and email
 router.get('/', (req, res, next) => {
   const promises = [];
@@ -149,6 +150,67 @@ router.get('/:id', (req, res, next) => {
     .catch((err) => {
       console.log(err);
       return next(boom.create(500, 'Internal server error from /projects/:id GET.'))
+    });
+})
+
+router.patch('/:id', authorize, (req, res, next) => {
+  console.log(req.body);
+  let updatedProject;
+
+  const projectId = Number.parseInt(req.params.id);
+
+  if (Number.isNaN(projectId) || projectId < 0) {
+    return next(boom.create(404, 'Not found.'));
+  }
+
+  knex('projects')
+    .where('id', projectId)
+    .first()
+    .then((project) => {
+      //check whether project belongs to current user
+      if (!project || project.user_id !== req.claim.userId) {
+        return next(boom.create(400, 'Bad request.'))
+      }
+
+      return knex('projects')
+        .where('id', projectId)
+        .update({
+          title: req.body.title,
+          link: req.body.link,
+          image: req.body.image,
+          description: req.body.description,
+          readiness: req.body.readiness,
+          published: req.body.published
+        }, '*')
+    })
+    .then((project) => {
+      console.log(project);
+      updatedProject = project
+
+      return knex('reviews')
+        .where('project_id', projectId)
+        .first()
+    })
+    .then((review) => {
+      console.log('review ', review);
+      return knex('reviews_questions')
+        .where('review_id', review.id)
+    })
+    .then((row) => {
+      console.log(row[0]);
+      return knex('questions')
+        .where('id', row[0].question_id)
+        .update({
+          question: req.body.questions
+        }, '*')
+    })
+    .then((row) => {
+      updatedProject.questions = row.question
+      res.send(updatedProject)
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(boom.create(500, 'Internal server error from /projects/:id PATCH.'))
     });
 })
 

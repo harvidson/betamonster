@@ -14,10 +14,21 @@ angular.module('app')
   function controller($state, $stateParams, projectsService) {
     const vm = this;
 
-
-
     vm.$onInit = function(){
-    vm.projectsService = projectsService
+      vm.project = {};
+      vm.projectsService = projectsService
+
+      if($stateParams.id) {
+        console.log('this is an edit');
+        projectsService.getProjectById($stateParams.id)
+        .then((response) => {
+          vm.project = response
+          console.log(vm.project);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+      }
 
     }
 
@@ -35,6 +46,20 @@ angular.module('app')
         console.log(err);
       })
 
+    }
+
+    vm.updateProject = function() {
+      console.log(vm.data);
+      vm.data.image = 'http://news.nationalgeographic.com/content/dam/news/2017/04/27/frog-gallery/01-frog-day-gallery.jpg'
+      projectsService.editProject($stateParams.id, vm.data)
+      .then((project) => {
+        $state.go('devDashboard')
+        vm.projectsService.isEdit = false;
+        console.log('heres the updated project submitted ', project);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     }
 
     vm.cancel = function() {

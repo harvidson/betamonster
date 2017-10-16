@@ -18,14 +18,7 @@ angular.module('app')
 
     vm.$onInit = function(){
 
-        projectsService.getProjectById($stateParams.id)
-        .then((response) => {
-          console.log(response);
-          vm.project = response
-        })
-        .catch((err) => {
-          console.log(err);
-        })
+
 
 
     }
@@ -48,7 +41,10 @@ angular.module('app')
     vm.cancel = function() {
       delete vm.data
       vm.projectForm.$setPristine();
+      $state.go('devDashboard')
     }
+
+
 
 
   }

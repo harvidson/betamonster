@@ -25,6 +25,7 @@ function controller(authService, reviewsService) {
       return reviewsService.getMyReviews(vm.userId)
     })
     .then((reviews) => {
+      console.log(reviews);
       vm.reviews = reviews
     })
     .catch((err) => {

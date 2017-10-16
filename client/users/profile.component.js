@@ -8,9 +8,9 @@ angular.module('app')
 
   })
 
-controller.$inject = ['authService', 'profileService']
+controller.$inject = ['authService']
 
-function controller(authService, profileService) {
+function controller(authService) {
   const vm = this;
 
   vm.$onInit = function() {
@@ -26,6 +26,7 @@ function controller(authService, profileService) {
       vm.firstName = user.firstName;
       vm.lastName = user.lastName;
       vm.email = user.email;
+      vm.github = user.github
     })
   }
 }
