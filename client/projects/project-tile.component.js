@@ -28,7 +28,7 @@ angular.module('app')
       .then((question) => {
         vm.project.question = question;
 
-        //find out whether this project belongs to current user (if yes, edit/delete buttons will be avail)
+        //find out whether this project belongs to current user (if yes, edit/delete buttons will be available)
         return authService.checkCookie()
       })
       .then((data) => {
@@ -53,7 +53,7 @@ angular.module('app')
       $state.go('editProject', { id: vm.project.id })
     }
 
-    // TODO: add unpublish; filter results on devDashboard and landing so that unpublished either don't show or show under their own heading
+    // TODO: add unpublish; filter results on devDashboard and landing so that unpublished projects show under their own heading
     vm.unpublish = function() {
       projectsService.unpublishProject(vm.project.id)
       .then((response) => {

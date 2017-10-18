@@ -19,7 +19,6 @@ angular.module('app')
       vm.projectsService = projectsService
 
       if($stateParams.id) {
-        console.log('this is an edit');
         projectsService.getProjectById($stateParams.id)
         .then((response) => {
           vm.data = response
@@ -34,13 +33,11 @@ angular.module('app')
 
     vm.submitProject = function(e){
       e.preventDefault();
-      console.log(vm.data);
       vm.data.image = 'https://upload.wikimedia.org/wikipedia/en/3/3a/Feral_goat_in_Aruba.JPG'
       projectsService.submitProject(vm.data)
       .then((project) => {
         $state.go('devDashboard')
         vm.projectsService.isEdit = false;
-        console.log('heres the new project submitted ', project);
       })
       .catch((err) => {
         console.log(err);
@@ -49,13 +46,11 @@ angular.module('app')
     }
 
     vm.updateProject = function() {
-      console.log(vm.data);
       vm.data.image = 'http://news.nationalgeographic.com/content/dam/news/2017/04/27/frog-gallery/01-frog-day-gallery.jpg'
       projectsService.editProject($stateParams.id, vm.data)
       .then((project) => {
         $state.go('devDashboard')
         vm.projectsService.isEdit = false;
-        console.log('heres the updated project submitted ', project);
       })
       .catch((err) => {
         console.log(err);
@@ -69,10 +64,7 @@ angular.module('app')
       $state.go('devDashboard')
     }
 
-
   }
-
-
 
 
 

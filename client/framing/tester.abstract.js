@@ -9,7 +9,6 @@ angular.module('app')
 
 controller.$inject = ['$state','authService']
 
-//lots of junk in here...stopping so that i can have 3 abstracts instead
   function controller($state, authService) {
     const vm = this;
     vm.activeButton = 'list'

@@ -16,16 +16,7 @@ angular.module('app')
     vm.$onInit = function() {
 
 
-
     }
-
-    vm.submitReview = function(data) {
-
-
-    }
-
-
-
 
 
   }

@@ -14,7 +14,6 @@ function controller($state, authService) {
 
 
   vm.$onInit = function(){
-    // const vm.passwordLength = 0;
 
   }
 
@@ -40,11 +39,9 @@ function controller($state, authService) {
   }
 
 
-
+// TODO: validate confirm password
   // vm.matchPassword = function() {
-  //   if (vm.data.password !== vm.data.confirm.password) {
-  //
-  //   }
+  //   
   // }
 
 }

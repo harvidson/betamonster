@@ -12,9 +12,6 @@ controller.$inject = ['$state', 'authService']
   function controller($state, authService) {
     const vm = this;
 
-
-
-
     vm.$onInit = function() {
 
 
@@ -32,14 +29,7 @@ controller.$inject = ['$state', 'authService']
         console.log(err);
       })
 
-
-
     }
-
-
-
-
-
 
   }
 

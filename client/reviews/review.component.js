@@ -16,8 +16,7 @@
     const vm = this;
     vm.ownsProject = true;
     vm.ownsReview = false;
-    //how do i get at review here? bindings above don't seem to do it.
-    // console.log(vm.review);
+
     // vm.contact = vm.review.contactOkay;
 
     vm.$onInit = function() {
@@ -30,7 +29,7 @@
         })
     }
 
-    // TODO: write edit & delete functions & routes for my-reviews
+    // TODO: edit & delete functions & routes for my-reviews
     vm.edit = function() {
 
     }

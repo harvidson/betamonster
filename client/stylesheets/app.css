@@ -2,7 +2,6 @@
   outline: 0;
 }
 
-
 .accent {
   color: #82BD38
 }
@@ -73,8 +72,3 @@ rect {
   width: 80px;
   z-index: 10;
 }
-
-
-
-/*buttons*/
-/*padding: ph1*/

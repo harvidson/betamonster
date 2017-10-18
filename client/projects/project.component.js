@@ -14,8 +14,6 @@ controller.$inject = ['authService'];
 
 function controller(authService) {
   const vm = this;
-  // const projectId = vm.project.id;
-
 
   vm.$onInit = function(){
     vm.authService = authService;

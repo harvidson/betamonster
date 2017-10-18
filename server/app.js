@@ -14,18 +14,12 @@ const bodyParser = require('body-parser')
 const app = express()
 app.disable('x-powered-by')
 
-//add routes
-// const index = require('./routes/index')
-
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '/../client')))
 app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
 
-
-//add things like app.use('/api/v1', index ==> for all the routes)
-// app.use('api/tester', require('./routes/tester'))
 app.use('/api/token', require('./routes/token'))
 app.use('/api/users', require('./routes/users'))
 app.use('/api/projects', require('./routes/projects'))

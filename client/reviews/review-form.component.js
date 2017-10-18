@@ -25,7 +25,6 @@ angular.module('app')
 
       reviewsService.submitReview(vm.data)
       .then((response) => {
-        console.log(response);
         vm.reviewForm.$setPristine();
         $state.go('testDashboard')
       })
@@ -40,8 +39,6 @@ angular.module('app')
 
       $state.go('testDashboard')
     }
-
-
 
 
   }

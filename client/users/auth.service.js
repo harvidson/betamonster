@@ -15,7 +15,8 @@ angular.module('app')
       return $http.post('/api/token/', loginCred)
       .then(function(response) {
         vm.loggedIn = true;
-        //if someone has sent you a link, it would be nice if, after login, you get to go to that link
+
+        // TODO: //if someone has sent you a link, after login, you should get sent to that link
         if (response.data.isDeveloper === true) {
           $state.go('devDashboard')
         } else {

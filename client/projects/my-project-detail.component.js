@@ -21,7 +21,6 @@ angular.module('app')
 
       reviewsService.getReviews(projectId)
       .then((reviews) => {
-        console.log(reviews);
         vm.reviews = reviews
       })
       .catch((err) => {

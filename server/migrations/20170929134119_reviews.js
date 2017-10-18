@@ -1,6 +1,6 @@
 'use strict';
 
-//this table is here so that a user will be able to seek additional batches of reviews for the same project (not yet implemented)
+// TODO: use this table to allow user to seek additional batches of reviews for the same project
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('reviews', (table) => {

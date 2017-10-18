@@ -477,8 +477,6 @@ router.post('/:id/reviews', authorize, (req, res, next) => {
 })
 
 
-//json.parse
-
 
 
 module.exports = router
