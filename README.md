@@ -1,4 +1,4 @@
-![screenshot](./images/betamonster_devdash.jpg)
+![screenshot](./client/images/betamonster_devdash.jpg)
 # Betamonster
 ### (Because every project's a monster at first.)
 
