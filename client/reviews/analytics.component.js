@@ -21,6 +21,7 @@ angular.module('app')
 
       reviewsService.getWatsonData(projectId)
         .then((data) => {
+          console.log(data);
           vm.watsonData = data;
 
           vm.watsonSummary();
@@ -94,7 +95,6 @@ angular.module('app')
         }));
         const percent = Math.round(1000 * d.data.score / total) / 10;
         tooltip.select('.label').html(d.data.tone);
-        // tooltip.select('.count').html(d.data.score);
         tooltip.select('.percent').html(percent + '%');
         tooltip.style('display', 'block');
       });
