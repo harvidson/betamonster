@@ -1,5 +1,5 @@
 <!-- ![screenshot](./client/images/betamonster_devdash.jpg) -->
-# Betam<img src="client/images/monster.png" width="30" alt="logo">nster
+# Betam<img src="client/images/monster.png" width="35" alt="logo">nster
 
 #### (Because every project's a monster at first.)
 <img src="client/images/betamonster_devdash.jpg" width="300" align="right" alt="dashboard-image">
