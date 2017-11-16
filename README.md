@@ -6,7 +6,7 @@ Betamonster is a single-page Angular app that streamlines the process of getting
 
 They can also support their fellow developers by giving other beta apps a whirl.
 
-<img src="client/images/betamonster_devdash.jpg" width="200" alt="dashboard-image">
+<img src="client/images/betamonster_devdash.jpg" width="300" align="right" alt="dashboard-image">
 
 ## Tech
 * Angular JS
