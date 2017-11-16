@@ -1,5 +1,5 @@
 <!-- ![screenshot](./client/images/betamonster_devdash.jpg) -->
-# Betamonster
+# <img src="client/images/monster.png" width="20" alt="logo">
 
 #### (Because every project's a monster at first.)
 Betamonster is a single-page Angular app that streamlines the process of getting feedback on beta projects. Developers can add new projects they'd like users to test out, pose specific questions for users to respond to, access feedback from multiple users in one place, and see trends in the sentiments expressed in user comments.

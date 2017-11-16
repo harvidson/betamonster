@@ -35,7 +35,6 @@ router.post('/', (req, res, next) => {
     .where('email', req.body.email)
     .first()
     .then((row) => {
-      // console.log(row);
       if (!row) {
         return next(boom.create(400, 'Invalid EMAIL or password.'))
       };
@@ -60,6 +59,7 @@ router.post('/', (req, res, next) => {
       res.send(user);
     })
     .catch(bcrypt.MISMATCH_ERROR, () => {
+      //allthereturn nexts should probably just be throw
       return next(boom.create(400, 'Invalid email or PASSWORD.'));
     })
     .catch((err) => {
