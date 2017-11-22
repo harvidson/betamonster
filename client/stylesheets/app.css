@@ -1,3 +1,20 @@
+main {
+  margin: auto;
+  position: relative;
+}
+
+container {
+  max-width: 960px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+header, footer, main {
+  max-width: 1200px;
+  margin: auto;
+}
+
 .link:focus {
   outline: 0;
 }
